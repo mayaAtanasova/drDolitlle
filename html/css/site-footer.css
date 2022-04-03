@@ -1,0 +1,4 @@
+.site-footer {
+    margin-top: var(--spacing-layout-elements, 2em);
+    padding-top: calc( var(--spacing-layout-elements, 2em) / 2);
+}

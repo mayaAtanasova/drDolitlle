@@ -1,0 +1,42 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal .inner {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: block;
+    background-color: #FFF;
+    padding: 2em;
+    border-radius: 0.3em;
+    box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.modal .inner img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+.modal button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 20px;
+    background: #FFF;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+}
