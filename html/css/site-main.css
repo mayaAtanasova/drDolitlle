@@ -246,6 +246,7 @@ img {
   padding: 1em;
   border-radius: 0.5em;
   margin-top: 100px;
+  background-color: rgb(255, 255, 251);
 }
 .ad-card:hover {
 cursor: pointer;
