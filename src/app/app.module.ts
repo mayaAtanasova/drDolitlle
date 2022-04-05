@@ -9,18 +9,19 @@ import { HeaderComponent } from './core/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './feature/pages/home/home.component';
+import { PagesModule } from './feature/pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     CoreModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [
