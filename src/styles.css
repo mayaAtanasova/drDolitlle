@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(assets/layout.css);
+@import url(assets/typography.css);
+@import url(assets/variables.css);
