@@ -1,4 +1,8 @@
 <section id="login">
+    <div *ngIf="isSubmitted && !isSuccessful" class="server-error">
+        <p>Неуспешен вход!</p>
+        <p>{{ errorMessage }}</p>
+    </div>
     <div class="login-form-container">
         <form 
         class="login-form"

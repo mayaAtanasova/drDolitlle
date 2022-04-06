@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Validation from '../password-validation';
@@ -16,10 +17,13 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
   isSuccessful = false;
-  isFailed = false;
+  isSubmitted = false;
   errorMessage = '';
 
-  constructor(private FormBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(
+    private FormBuilder: FormBuilder, 
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.FormBuilder.group({
@@ -37,12 +41,27 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { email, password } = this.form;
+    const { email, password } = this.form.value;
     this.authService.register(email, password).subscribe({
-      
-    })
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSubmitted = true;  
+        this.router.navigate(['/'])      
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSubmitted = true;
+        this.isSuccessful = false;
+        setTimeout(() => this.hideAlert(), 2000);
+      }
+    });
+  }
+
+  hideAlert() {
+    this.isSubmitted = false;
     this.isSuccessful = false;
-    this.form.reset();
+    this.errorMessage = ''
   }
 
 }

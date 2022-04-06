@@ -1,4 +1,8 @@
 <section id="register">
+    <div *ngIf="isSubmitted && !isSuccessful" class="server-error">
+        <p>Неуспешна регистрация!</p>
+        <p>{{ errorMessage }}</p>
+    </div>
     <div class="registration-form-container">
         <form class="registration-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <fieldset>
