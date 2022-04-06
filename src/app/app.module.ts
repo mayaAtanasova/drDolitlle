@@ -12,6 +12,7 @@ import { HomeComponent } from './feature/pages/home/home.component';
 import { PagesModule } from './feature/pages/pages.module';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    AuthModule,
     CoreModule.forRoot(),
     FontAwesomeModule,
-    PagesModule
+    AuthModule,
+    PagesModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [
