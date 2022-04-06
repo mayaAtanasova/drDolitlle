@@ -1,5 +1,5 @@
 .login-form-container {
-    width: 70%;
+    width: 350px;
     margin: 0 auto;
   display: flex;
   align-items: center;
@@ -38,13 +38,18 @@ h2::after {
   border: none;
 }
 
+.registration-form label{
+  margin: 1em 0 0.2em 0;
+  display: inline-block;
+  }
+
 .login-form input {
   width: 100%;
   border: none;
   border-radius: 0.4em;
   background-color: rgba(7, 0, 77, 0.1);
   padding: 0.2em;
-  margin: 0.5em 0 2em 0;
+  margin: 1em 0 0.2em 0;
 }
 
 .login-btn {
@@ -55,6 +60,10 @@ h2::after {
   border-radius: 0.4em;
   font-size: 1.2em;
   margin: 2em auto;
+}
+
+.login-btn:disabled {
+  background-color: grey;
 }
 
 .text-center {

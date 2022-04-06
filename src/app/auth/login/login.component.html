@@ -1,20 +1,48 @@
 <section id="login">
     <div class="login-form-container">
-        <form class="login-form">
+        <form 
+        class="login-form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
             <fieldset>
                 <div class="heading">
                     <h2>Вход</h2>
                 </div>
 
                 <!-- email -->
-                <label for="email"><span><i class="fas fa-envelope"></i></span>E-mail:</label>
-                <input type="email" name="email" placeholder="ivan@abv.bg">
+                <label for="email">E-mail:</label>
+                <input 
+                    type="email" 
+                    formControlName="email" 
+                    placeholder="ivan@abv.bg"
+                    [ngClass]="{'input-error': f['email'].touched && f['email'].invalid}">
+                <div 
+                    *ngIf="f['email'].touched && f['email'].errors"
+                    class="error">
+                    <div *ngIf="f['email'].errors['required']">Полето "email" е задължително!</div>
+                    <div *ngIf="f['email'].errors['email']">Невалиден email адрес!</div>             
+                </div>
 
                 <!-- password -->
-                <label for="password"><span><i class="fas fa-lock"></i></span>Парола:</label>
-                <input type="password" name="password" placeholder="******">
-
-                <button class="login-btn">Вход</button>
+                <label for="password">Парола:</label>
+                <input 
+                    type="password" 
+                    formControlName="password" 
+                    placeholder="******"
+                    [ngClass]="{'input-error': f['password'].touched && f['password'].invalid}">
+                <div 
+                    *ngIf="f['password'].touched && f['password'].errors"
+                    class="error">
+                        <div *ngIf="f['password'].errors['required']">Полето "парола" е задължително!</div>
+                        <div *ngIf="f['password'].errors['minlength'] || f['password'].errors['maxlength']">Паролата трябва да е между 6 и 20 символа</div>                  
+                </div>
+                
+                <button 
+                class="login-btn"
+                [disabled]="form.invalid"
+                >
+                Вход
+                </button>
 
                 <p class="text-center">
                     Още нямате регистрация?

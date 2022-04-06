@@ -1,6 +1,6 @@
 <section id="register">
     <div class="registration-form-container">
-        <form class="registration-form">
+        <form class="registration-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <fieldset>
                 <div class="heading">
                     <h2>Регистрационна форма</h2>
@@ -8,18 +8,52 @@
 
                 <!-- email -->
                 <label for="email"><span><i class="fas fa-envelope"></i></span>E-mail:</label>
-                <input type="email" name="email" placeholder="ivan@abv.bg">
-
+                <input 
+                    type="email" 
+                    formControlName="email" 
+                    placeholder="ivan@abv.bg"
+                    [ngClass]="{'input-error': f['email'].touched && f['email'].invalid}">
+                <div 
+                    *ngIf="f['email'].touched && f['email'].errors"
+                    class="error">
+                        <div *ngIf="f['email'].errors['required']">Полето "email" е задължително!</div>
+                        <div *ngIf="f['email'].errors['email']">Невалиден email адрес!</div>             
+                </div>
                 <!-- password -->
 
                 <label for="password"><span><i class="fas fa-lock"></i></span>Парола:</label>
-                <input type="password" name="password" placeholder="******">
+                <input 
+                    type="password" 
+                    formControlName="password" 
+                    placeholder="******"
+                    [ngClass]="{'input-error': f['password'].touched && f['password'].invalid}">
+                <div 
+                    *ngIf="f['password'].touched && f['password'].errors"
+                    class="error">
+                        <div *ngIf="f['password'].errors['required']">Полето "парола" е задължително!</div>
+                        <div *ngIf="f['password'].errors['minlength'] || f['password'].errors['maxlength']">Паролата трябва да е между 6 и 20 символа</div>                  
+                </div>
 
                 <!-- rePassword -->
-                <label for="rePassword"><span><i class="fas fa-lock"></i></span>Прола отново:</label>
-                <input type="password" name="rePassword" placeholder="******">
+                <label for="confirmPassword">Повторете паролата:</label>
+                <input 
+                    type="password" 
+                    formControlName="confirmPassword" 
+                    placeholder="******"
+                    [ngClass]="{'input-error': f['password'].touched && f['password'].invalid}">
+                <div 
+                    *ngIf="f['confirmPassword'].touched && f['confirmPassword'].errors"
+                    class="error">
+                        <div *ngIf="f['confirmPassword'].errors['required']">Полето "повторете парола" е задължително!</div>
+                        <div *ngIf="f['confirmPassword'].errors['matching']">Паролите не съвпадат</div>                  
+                </div>
 
-                <button class="registration-btn">Регистрация</button>
+                <button 
+                    class="registration-btn"
+                    [disabled]="form.invalid"
+                    >
+                    Регистрация
+                </button>
 
                 <p class="text-center">
                     Вече имате регистрация?
