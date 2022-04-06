@@ -296,3 +296,26 @@ img {
   font-size: 1.2em;
   margin: 2em auto;
 }
+
+.back {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #07004d;
+  opacity: 0.5;
+  position:fixed;
+  bottom: 1em;
+  right: 1em;
+}
+
+.back p {
+  color: white;
+  font-weight: 700;
+  font-size: 2em;
+  position: absolute;
+  top: 5%;
+  left: 35%;
+  margin:0;
+  padding:0;
+  z-index: 10;
+}

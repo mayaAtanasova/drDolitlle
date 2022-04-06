@@ -39,6 +39,7 @@ li {
   padding: 1em 0;
   position: relative;
   margin: 0 0.5em 0 0;
+  cursor: pointer;
 }
 
 a,

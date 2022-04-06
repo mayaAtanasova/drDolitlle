@@ -10,6 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './feature/pages/home/home.component';
 import { PagesModule } from './feature/pages/pages.module';
+import { AuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { PagesModule } from './feature/pages/pages.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
+    AuthModule,
     CoreModule.forRoot(),
     FontAwesomeModule,
     PagesModule
