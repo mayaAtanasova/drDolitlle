@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdvertsPageComponent } from './adverts-page/adverts-page.component';
+import { AdItemComponent } from './ad-item/ad-item.component';
 
 
 
@@ -14,7 +15,8 @@ import { AdvertsPageComponent } from './adverts-page/adverts-page.component';
     HomeComponent,
     PageNotFoundComponent,
     AdminPageComponent,
-    AdvertsPageComponent
+    AdvertsPageComponent,
+    AdItemComponent
   ],
   imports: [
     CommonModule,
