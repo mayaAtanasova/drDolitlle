@@ -116,9 +116,10 @@
                 <h2>Обяви от наши клиенти</h2>
             </div>
 
-            <div class="ad-cards">
+            <div *ngIf="adList" class="ad-cards">
+                <ad-item *ngFor="let ad of adList" [ad]="ad"></ad-item>
 
-                <div class="ad-card">
+                <!-- <div class="ad-card">
                     <img class="ad-img" src="/assets/ad_img.png" alt="ad_img">
                     <h3>Продавам</h3>
                     <p>Продавам малък женски кокер шпаньол ......</p>
@@ -134,7 +135,7 @@
                     <img class="ad-img" src="/assets/ad_img.png" alt="ad_img">
                     <h3>Подарявам</h3>
                     <p>Малки персийски котенца на 2 месеца ......</p>
-                </div>
+                </div> -->
 
             </div>
 

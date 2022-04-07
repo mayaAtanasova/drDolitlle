@@ -13,6 +13,7 @@ import { PagesModule } from './feature/pages/pages.module';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { ImgFallbackModule} from 'ngx-img-fallback';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     RouterModule,
     CoreModule.forRoot(),
     FontAwesomeModule,
+    ImgFallbackModule,
     AuthModule,
     PagesModule,
     SharedModule

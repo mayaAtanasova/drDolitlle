@@ -233,56 +233,6 @@ img {
   justify-content: space-around;
 }
 
-/* Ad Card */
-.ad-card {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
-  box-shadow: 3px 5px 9px -4px #07004d;
-  text-align: center;
-  padding: 1em;
-  border-radius: 0.5em;
-  margin-top: 100px;
-  background-color: rgb(255, 255, 251);
-}
-.ad-card:hover {
-  cursor: pointer;
-}
-
-.ad-card img {
-  position: absolute;
-  width: 450px;
-  height: 300px;
-  top: -5%;
-  left: 5%;
-  background-color: #e6e6e6;
-  border-radius: 0.4em;
-  border: 2px dashed;
-}
-
-.ad-card h3 {
-  font-weight: 700;
-  font-size: 1.4em;
-  position: relative;
-  display: inline-block;
-  margin-top: 300px;
-}
-
-.ad-card h3::after {
-  position: absolute;
-  content: "";
-  background-color: var(--color-link-default);
-  width: 100%;
-  height: 3px;
-  top: 100%;
-  left: 0;
-}
-
-.ad-card p {
-  font-size: 0.8em;
-}
-
 .btn-holder {
   display: flex;
   justify-content: end;
