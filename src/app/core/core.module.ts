@@ -11,6 +11,7 @@ import { TokenStorageService } from './services/token-storage.service';
 import { UserService } from './services/user.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt'
 
 
 @NgModule({
@@ -38,6 +39,8 @@ export class CoreModule {
         AuthService,
         TokenStorageService,
         UserService,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService,
         {
           provide: HTTP_INTERCEPTORS,
           multi: true,

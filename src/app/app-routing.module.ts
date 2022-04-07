@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RoleGuard } from './core/services/role-guard.service';
 import { AdminPageComponent } from './feature/pages/admin-page/admin-page.component';
 import { AdvertsPageComponent } from './feature/pages/adverts-page/adverts-page.component';
 import { HomeComponent } from './feature/pages/home/home.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminPageComponent
+    component: AdminPageComponent,
+    canActivate: [RoleGuard]
   },
   {
     path: 'adverts',

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.roles = this.tokenStorage.getUser()!.roles;
     }
   }
 
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         this.isSuccessful = true;
         this.isSubmitted = true;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = this.tokenStorage.getUser()!.roles;
         if(this.roles.includes('ROLE_ADMIN')){
           this.router.navigate(['/admin']);
         } else if (this.roles.includes('ROLE_MODERATOR')){
