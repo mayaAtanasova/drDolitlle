@@ -9,15 +9,14 @@ import { AdsService } from 'src/app/core/services/ads.service';
 })
 export class AdListComponent implements OnInit {
 
-  ads: IAd[] = [];
-  currentAd: IAd;
-  currentIndex = -1;
+  adList: IAd[] = [];
   category = '';
 
   page = 1;
   count = 0;
-  pageSize = 3;
-  pageSizes = [3, 6, 9];
+  totPages = [0];
+  pageSize = 6;
+  // pageSizes = [3, 6, 9];
 
   constructor(private adService: AdsService) { }
 
@@ -49,15 +48,55 @@ export class AdListComponent implements OnInit {
     this.adService.getAllAds(params)
       .subscribe({
         next: (data) => {
-          const { ads, totalItems } = data;
-          this.ads = ads;
+          const { Ads, totalItems, totalPages } = data;
+          this.adList = Ads;
           this.count = totalItems;
-          console.log(data);
+          this.totPages = Array.from(Array(totalPages).keys());
+          // console.log(this.adList);
+          // console.log(this.count);
+          console.log(this.totPages);
         },
         error: (err) => {
           console.log(err);
         }
       });
+  }
+
+  gotoPage($event: any): void {
+    console.log('next page event')
+    // this.page = $event;
+    console.log($event);
+    this.retrievePaginatedAds();
+  }
+
+  gotoPrev(){
+    this.page -= 1;
+    console.log(this.page);
+    this.retrievePaginatedAds();
+  }
+
+  gotoNext(){
+    this.page += 1;
+    console.log(this.page);
+    this.retrievePaginatedAds();
+  }
+
+
+  removeAllAds(): void {
+    this.adService.deleteAll()
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.retrievePaginatedAds();
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchCategory(): void {
+    console.log(this.category);
+    this.page = 1;
+    this.retrievePaginatedAds();
   }
 
 }

@@ -14,6 +14,8 @@ import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { ImgFallbackModule} from 'ngx-img-fallback';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ImgFallbackModule} from 'ngx-img-fallback';
     ImgFallbackModule,
     AuthModule,
     PagesModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [

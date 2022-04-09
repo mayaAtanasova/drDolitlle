@@ -13,6 +13,7 @@ export class AdItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.ad);
   }
 
 }
