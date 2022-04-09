@@ -238,6 +238,10 @@ img {
   justify-content: end;
 }
 
+.btn-holder a {
+  color: white;
+}
+
 .ad-link {
   background-color: var(--color-link-default);
   padding: 1em 7em;

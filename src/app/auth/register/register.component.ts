@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
         if(this.roles.includes('ROLE_ADMIN')){
           this.router.navigate(['/admin']);
         } else if (this.roles.includes('ROLE_MODERATOR')){
-          this.router.navigate(['/adverts']);
+          this.router.navigate(['/adlist']);
         } else if (this.roles.includes('ROLE_USER')){
           this.router.navigate(['/']);
         }    

@@ -118,31 +118,12 @@
 
             <div *ngIf="adList" class="ad-cards">
                 <ad-item *ngFor="let ad of adList" [ad]="ad"></ad-item>
-
-                <!-- <div class="ad-card">
-                    <img class="ad-img" src="/assets/ad_img.png" alt="ad_img">
-                    <h3>Продавам</h3>
-                    <p>Продавам малък женски кокер шпаньол ......</p>
-                </div>
-
-                <div class="ad-card">
-                    <img class="ad-img" src="/assets/ad_img.png" alt="ad_img">
-                    <h3>Търся</h3>
-                    <p>Търся мъжки ротвайлер с цел създаване на потомство ......</p>
-                </div>
-
-                <div class="ad-card">
-                    <img class="ad-img" src="/assets/ad_img.png" alt="ad_img">
-                    <h3>Подарявам</h3>
-                    <p>Малки персийски котенца на 2 месеца ......</p>
-                </div> -->
-
             </div>
 
         </div>
 
         <div class="btn-holder">
-            <button class="ad-link">Виж всички</button>
+            <button class="ad-link"><a routerLink="/adlist">Виж всички</a></button>
         </div>
 
     </div>

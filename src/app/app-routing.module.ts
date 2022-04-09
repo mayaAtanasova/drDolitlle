@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleGuard } from './core/services/role-guard.service';
+import { AdListComponent } from './feature/pages/ad-list/ad-list.component';
 import { AdminPageComponent } from './feature/pages/admin-page/admin-page.component';
-import { AdvertsPageComponent } from './feature/pages/adverts-page/adverts-page.component';
 import { HomeComponent } from './feature/pages/home/home.component';
 
 const routes: Routes = [
+  {
+    path: 'adlist',
+    component: AdListComponent
+  },
   {
     path: '',
     pathMatch: 'full',
@@ -20,10 +24,7 @@ const routes: Routes = [
     component: AdminPageComponent,
     canActivate: [RoleGuard]
   },
-  {
-    path: 'adverts',
-    component: AdvertsPageComponent
-  },
+
 
 ];
 
@@ -31,7 +32,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(
     routes,
     {
-      useHash: true,
+      // useHash: true,
       anchorScrolling: 'enabled',
       onSameUrlNavigation: 'reload',
       scrollPositionRestoration: 'enabled'

@@ -5,8 +5,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AdvertsPageComponent } from './adverts-page/adverts-page.component';
 import { AdItemComponent } from './ad-item/ad-item.component';
+import { AdListComponent } from './ad-list/ad-list.component';
 
 
 
@@ -15,8 +15,9 @@ import { AdItemComponent } from './ad-item/ad-item.component';
     HomeComponent,
     PageNotFoundComponent,
     AdminPageComponent,
-    AdvertsPageComponent,
-    AdItemComponent
+    AdListComponent,
+    AdItemComponent,
+    AdListComponent
   ],
   imports: [
     CommonModule,
