@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Validation from '../password-validation';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -19,10 +20,13 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSubmitted = false;
   errorMessage = '';
+  isLoggedIn: boolean;
+  roles: any;
 
   constructor(
     private FormBuilder: FormBuilder, 
     private authService: AuthService,
+    private tokenStorage: TokenStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -45,9 +49,19 @@ export class RegisterComponent implements OnInit {
     this.authService.register(email, password).subscribe({
       next: data => {
         console.log(data);
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
         this.isSuccessful = true;
-        this.isSubmitted = true;  
-        this.router.navigate(['/'])      
+        this.isSubmitted = true;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser()!.roles;
+        if(this.roles.includes('ROLE_ADMIN')){
+          this.router.navigate(['/admin']);
+        } else if (this.roles.includes('ROLE_MODERATOR')){
+          this.router.navigate(['/adverts']);
+        } else if (this.roles.includes('ROLE_USER')){
+          this.router.navigate(['/']);
+        }    
       },
       error: err => {
         this.errorMessage = err.error.message;

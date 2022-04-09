@@ -8,6 +8,9 @@ import { IAd } from 'src/app/core/interfaces/ad';
 })
 export class AdItemComponent implements OnInit {
 
+  defaultImage = 'assets/ad_img.png'
+  
+
   @Input() ad: IAd;
 
   constructor() { }

@@ -14,8 +14,12 @@ export class AdsService {
   constructor(private http: HttpClient) { }
 
   getAllAds(params: any): Observable<any> {
-    const tutorials = this.http.get<IAd[]>(baseUrl, { params });
-    return tutorials;
+    const ads = this.http.get<IAd[]>(baseUrl, { params });
+    return ads;
+  }
+  getLastThreeAds(): Observable<any> {
+    const ads = this.http.get<IAd[]>(`${baseUrl}/lastthree`);
+    return ads;
   }
   getAdById(id: string): Observable<IAd> {
     return this.http.get<IAd>(`${baseUrl}/${id}`);

@@ -16,11 +16,10 @@ export class HomeComponent implements OnInit {
   constructor(private adService: AdsService) { }
 
   ngOnInit(): void {
-    this.adService.getAllAds({})
-    .subscribe(adsData =>{
-      this.adList = adsData.Ads.slice(0, 3);
-      console.log(this.adList);
-    })
+    this.adService.getLastThreeAds()
+      .subscribe(lastThreeAds => {
+        this.adList = lastThreeAds;
+      })
   }
 
 }

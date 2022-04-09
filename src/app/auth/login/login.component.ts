@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
         this.isSubmitted = true;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser()!.roles;
+        console.log(this.roles);
         if(this.roles.includes('ROLE_ADMIN')){
           this.router.navigate(['/admin']);
         } else if (this.roles.includes('ROLE_MODERATOR')){
