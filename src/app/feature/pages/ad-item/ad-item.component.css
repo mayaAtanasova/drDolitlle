@@ -1,8 +1,10 @@
 /* Ad Card */
 .ad-card {
     position: relative;
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 250px;
+    min-height: 250px;
     background-color: #fff;
     box-shadow: 3px 5px 9px -4px #07004d;
     text-align: center;
@@ -10,6 +12,8 @@
     border-radius: 0.5em;
     margin-top: 100px;
     background-color: rgb(255, 255, 251);
+    padding: 1em;
+    object-fit: cover;
   }
   .ad-card:hover {
     cursor: pointer;
@@ -17,8 +21,8 @@
   
   .ad-card img {
     position: absolute;
-    width: 450px;
-    height: 300px;
+    width: 90%;
+    height: 70%;
     top: -5%;
     left: 5%;
     background-color: #e6e6e6;

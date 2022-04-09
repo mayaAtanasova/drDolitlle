@@ -52,9 +52,6 @@ export class AdListComponent implements OnInit {
           this.adList = Ads;
           this.count = totalItems;
           this.totPages = Array.from(Array(totalPages).keys());
-          // console.log(this.adList);
-          // console.log(this.count);
-          console.log(this.totPages);
         },
         error: (err) => {
           console.log(err);
@@ -63,21 +60,17 @@ export class AdListComponent implements OnInit {
   }
 
   gotoPage($event: any): void {
-    console.log('next page event')
-    // this.page = $event;
-    console.log($event);
+    this.page = Number($event.target.innerText);
     this.retrievePaginatedAds();
   }
 
   gotoPrev(){
     this.page -= 1;
-    console.log(this.page);
     this.retrievePaginatedAds();
   }
 
   gotoNext(){
     this.page += 1;
-    console.log(this.page);
     this.retrievePaginatedAds();
   }
 

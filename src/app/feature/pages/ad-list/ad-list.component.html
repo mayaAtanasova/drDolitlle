@@ -29,7 +29,11 @@
     <div class="pagination">
         <button [disabled]="page === 1" (click)="gotoPrev()">Предишна страница</button>
         <ul>
-            <li *ngFor="let pg of totPages" [class.highlighted]="pg === page - 1">
+            <li 
+            *ngFor="let pg of totPages" 
+            [class.highlighted]="pg === page - 1"
+            (click)="gotoPage($event)"
+            >
                 {{pg + 1}}
             </li>
         </ul>
