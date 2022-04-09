@@ -1,0 +1,17 @@
+:root {
+  --font-size-body: 14px;
+  --font-size-body-larger: 16px;
+  --font-size-body-big: 18px;
+  --font-size-body-huge: 20px;
+
+  /* --layout-main-width: 60em; */
+
+  --color-body-text: #000;
+  --color-body-bgrd: rgb(206, 206, 206);
+  --color-link-default: #AD2A26;
+
+  --color-border-default: rgb(61, 61, 61);
+
+  --spacing-layout-elements: 2em;
+
+}

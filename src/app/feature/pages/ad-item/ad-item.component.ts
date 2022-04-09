@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IAd } from 'src/app/core/interfaces/ad';
+import { trigger, transition, state, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'ad-item',

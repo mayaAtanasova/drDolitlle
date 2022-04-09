@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IAd } from 'src/app/core/interfaces/ad';
 import { AdsService } from 'src/app/core/services/ads.service';
+import { trigger, transition, state, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-ad-list',
   templateUrl: './ad-list.component.html',
-  styleUrls: ['./ad-list.component.css']
+  styleUrls: ['./ad-list.component.css'],
 })
 export class AdListComponent implements OnInit {
 
