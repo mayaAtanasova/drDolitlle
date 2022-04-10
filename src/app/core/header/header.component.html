@@ -21,7 +21,7 @@
     <div class="contact">
         <div class="conditional">
             <ul>
-                <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login">Вход</a></li>
+                <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="user/login">Вход</a></li>
                 <li *ngIf="(isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="logoutHandler()">Изход</a></li>
                 <span>
                     <fa-icon [icon]="faPhone"></fa-icon>

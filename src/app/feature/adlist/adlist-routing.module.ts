@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/auth/auth-guard.service';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
 import { AdListComponent } from './ad-list/ad-list.component';
 import { AdNewComponent } from './ad-new/ad-new.component';
+import { AutorGuard } from './autor-guard.service';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
 },
 {
     path: 'new',
-    canActivate: [AuthGuard],
+    canActivate: [AutorGuard],
     component: AdNewComponent,
 },
 {
@@ -21,9 +21,4 @@ const routes: Routes = [
     component: AdDetailComponent,
 },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class AdlistRoutingModule { }
+export const AdlistRoutingModule = RouterModule.forChild(routes);

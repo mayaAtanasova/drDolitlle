@@ -1,1 +1,43 @@
-<p>ad-new works!</p>
+<section id="ad-form-section">
+    <div class="ad-form-container">
+        <form class="ad-form">
+            <!-- <fieldset> -->
+                <div class="heading">
+                    <h2>Публикуване на обява</h2>
+                </div>
+
+                <!-- category -->
+                <label for="category">Категория:</label>
+                <select name="category">
+                    <option value="0">Изберете от:</option>
+                    <option value="Търся">Търся</option>
+                    <option value="Продавам">Продавам</option>
+                    <option value="Подарявам">Подарявам</option>
+                </select>
+
+                <!-- description -->
+                <label for="description">Описание:</label>
+                <textarea name="description" rows="5" cols="10"></textarea>
+
+                <!-- contactName -->
+                <label for="contactName">Лице за контакт:</label>
+                <input type="text" name="contactName" placeholder="Иван Иванов">
+
+                <!-- contactEmail -->
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" placeholder="ivan@abv.bg">
+
+                <!-- contactPhone -->
+                <label for="contactPhone">Телефон за контакт:</label>
+                <input type="text" name="contactPhone" placeholder="0888888888">
+
+                <!-- adImage -->
+                <label for="adImage">Добавете снимка по желание:</label>
+                <input type="file" name="adImage">
+
+                <button class="ad-btn">Публикуване</button>
+
+            <!-- </fieldset> -->
+        </form>
+    </div>
+</section>

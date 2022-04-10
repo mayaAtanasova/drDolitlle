@@ -7,8 +7,8 @@ import { HomeComponent } from './feature/pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'adlist',
-    loadChildren: () => import('./feature/adlist/adlist.module').then(m => m.AdlistModule)
+    path: 'user',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '',
@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminPageComponent,
     canActivate: [RoleGuard]
+  },
+  {
+    path: 'adlist',
+    loadChildren: () => import('./feature/adlist/adlist.module').then(m => m.AdlistModule)
   },
 
 
