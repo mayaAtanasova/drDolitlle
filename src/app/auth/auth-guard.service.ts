@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot) {
 
         const loggedUser = this.tokenService.getUser();
-        if(loggedUser){
+        if(!loggedUser){
             this.router.navigate(['/home']);
             return false;
         }

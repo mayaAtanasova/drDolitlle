@@ -1,0 +1,43 @@
+<div class="ads-dashboard">
+
+    <div class="search-group">
+
+        <select [(ngModel)]="category">
+            <option selected value="">Изберете категория:</option>
+            <option value="Търся">Търся</option>
+            <option value="Подарявам">Подарявам</option>
+            <option value="Продавам">Продавам</option>
+        </select>
+
+        <button class="search-btn" type="button" (click)="searchCategory()">
+            <p>
+                Филтър по категория
+            </p>
+        </button>
+
+    </div>
+
+    <div class="ad-list">
+        <h1>Обяви за домашни любимци</h1>
+        <div *ngIf="adList" class="ad-list-items">
+            <ad-item *ngFor="
+        let ad of adList" [ad]="ad">
+            </ad-item>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button [disabled]="page === 1" (click)="gotoPrev()">Предишна страница</button>
+        <ul>
+            <li 
+            *ngFor="let pg of totPages" 
+            [class.highlighted]="pg === page - 1"
+            (click)="gotoPage($event)"
+            >
+                {{pg + 1}}
+            </li>
+        </ul>
+        <button [disabled]="page >= totPages.length" (click)="gotoNext()">Следваща страница</button>
+    </div>
+
+</div>

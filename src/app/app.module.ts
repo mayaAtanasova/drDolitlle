@@ -13,7 +13,6 @@ import { PagesModule } from './feature/pages/pages.module';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { ImgFallbackModule} from 'ngx-img-fallback';
 import { FormsModule } from '@angular/forms';
 
 
@@ -28,7 +27,6 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     CoreModule.forRoot(),
     FontAwesomeModule,
-    ImgFallbackModule,
     AuthModule,
     PagesModule,
     SharedModule,

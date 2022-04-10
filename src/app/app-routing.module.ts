@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleGuard } from './core/services/role-guard.service';
-import { AdListComponent } from './feature/pages/ad-list/ad-list.component';
+import { AdListComponent } from './feature/adlist/ad-list/ad-list.component';
 import { AdminPageComponent } from './feature/pages/admin-page/admin-page.component';
 import { HomeComponent } from './feature/pages/home/home.component';
 
 const routes: Routes = [
   {
     path: 'adlist',
-    component: AdListComponent
+    loadChildren: () => import('./feature/adlist/adlist.module').then(m => m.AdlistModule)
   },
   {
     path: '',

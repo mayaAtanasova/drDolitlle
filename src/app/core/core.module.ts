@@ -12,14 +12,12 @@ import { UserService } from './services/user.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
-import { ImgFallbackDirective } from './helpers/img-fallback.directive'
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ImgFallbackDirective
   ],
   imports: [
     CommonModule,
