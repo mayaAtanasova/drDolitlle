@@ -235,7 +235,14 @@ img {
 .ad-cards {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 0 2em;
+}
+
+ad-item {
+  width: 450px;
+  flex: 1 0 450px;
 }
 
 .btn-holder {
@@ -308,5 +315,8 @@ img {
     flex-direction: column;
   }
 
+  .ad-cards {
+    flex-direction: column;
+  }
 
 }
