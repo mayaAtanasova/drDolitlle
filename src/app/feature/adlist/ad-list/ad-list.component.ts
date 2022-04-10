@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IAd } from 'src/app/core/interfaces/ad';
 import { AdsService } from 'src/app/core/services/ads.service';
 import { trigger, transition, state, style, animate } from '@angular/animations';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
   selector: 'app-ad-list',
@@ -9,6 +12,8 @@ import { trigger, transition, state, style, animate } from '@angular/animations'
   styleUrls: ['./ad-list.component.css'],
 })
 export class AdListComponent implements OnInit {
+
+  isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
 
   adList: IAd[] = [];
   category = '';
@@ -19,10 +24,18 @@ export class AdListComponent implements OnInit {
   pageSize = 6;
   // pageSizes = [3, 6, 9];
 
-  constructor(private adService: AdsService) { }
+  constructor(
+    private adService: AdsService,
+    private router: Router,
+    private tokenStorageService: TokenStorageService
+    ) { }
 
   ngOnInit(): void {
     this.retrievePaginatedAds();
+  }
+
+  gotoNew() {
+    this.router.navigate(['/adlist/new']);
   }
 
   getRequestParams(searchCategory: string, page: number, pageSize: number): any {

@@ -1,5 +1,15 @@
 <div class="ads-dashboard">
 
+    <div class="add-new">
+        <a 
+        *ngIf="(isLoggedIn$ | async)"
+        routerLink="/adlist/new">
+        <button class="add-new-ad">
+            Публикувай нова обява
+        </button>
+        </a>
+    </div>
+
     <div class="search-group">
 
         <select [(ngModel)]="category">
@@ -29,11 +39,7 @@
     <div class="pagination">
         <button [disabled]="page === 1" (click)="gotoPrev()">Предишна страница</button>
         <ul>
-            <li 
-            *ngFor="let pg of totPages" 
-            [class.highlighted]="pg === page - 1"
-            (click)="gotoPage($event)"
-            >
+            <li *ngFor="let pg of totPages" [class.highlighted]="pg === page - 1" (click)="gotoPage($event)">
                 {{pg + 1}}
             </li>
         </ul>

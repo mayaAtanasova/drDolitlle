@@ -38,6 +38,36 @@
   padding: 0;
 }
 
+.add-new {
+  display: flex;
+  align-items: center;
+}
+
+.add-new a {
+  width: 250px;
+  height: 250px;
+  background-color: rgb(4, 4, 71);
+  border: none;
+  height: 50px;
+  border-radius: var(--border-radius);
+  font-size: 1em;
+  color: white;
+  margin: 5em 2em;
+  text-align: center;
+}
+
+.add-new a button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 1em;
+}
+
+.add-new a:hover {
+  cursor: pointer;
+  background-color: rgb(41, 41, 92);
+}
+
 /* Ad list */
 
 .ad-list h1 {
