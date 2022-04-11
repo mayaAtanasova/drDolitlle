@@ -1,0 +1,17 @@
+section {
+    background-image: url('/assets/logo_notext.svg');
+    background-repeat: no-repeat;
+}
+
+div {
+    background-color: var(--color-link-default);
+    border-radius: var(--border-radius);
+    padding: 2em;
+    margin: 2em;
+    color: white;
+    font-size: 2em;
+}
+
+div:hover {
+    cursor: pointer;
+}

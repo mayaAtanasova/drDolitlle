@@ -36,7 +36,6 @@ export class AdListComponent implements OnInit {
   count = 0;
   totPages = [0];
   pageSize = 6;
-  // pageSizes = [3, 6, 9];
 
   constructor(
     private adService: AdsService,
