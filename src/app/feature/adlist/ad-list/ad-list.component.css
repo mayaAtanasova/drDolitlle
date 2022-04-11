@@ -41,30 +41,29 @@
 .add-new {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .add-new a {
-  width: 250px;
-  height: 250px;
-  background-color: rgb(4, 4, 71);
-  border: none;
-  height: 50px;
-  border-radius: var(--border-radius);
-  font-size: 1em;
+  width: 100%;
   color: white;
+  font-size: 2em;
   margin: 5em 2em;
   text-align: center;
 }
 
-.add-new a button {
-  background-color: transparent;
+.add-new button {
+  background-color: rgb(4, 4, 71);
   color: white;
   border: none;
+  border-radius: var(--border-radius);
   font-size: 1em;
+  margin-top: 5em;
+  padding: 1em;
 }
 
-.add-new a:hover {
-  cursor: pointer;
+.add-new button:hover {
+  cursor:pointer;
   background-color: rgb(41, 41, 92);
 }
 

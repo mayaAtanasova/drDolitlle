@@ -1,13 +1,15 @@
 <div class="ads-dashboard">
 
     <div class="add-new">
-        <a 
+        <button class="add-new-ad"
         *ngIf="(isLoggedIn$ | async)"
+        >
+        <a 
         routerLink="/adlist/new">
-        <button class="add-new-ad">
             Публикувай нова обява
-        </button>
         </a>
+    </button>
+
     </div>
 
     <div class="search-group">
@@ -29,7 +31,8 @@
 
     <div class="ad-list">
         <h1>Обяви за домашни любимци</h1>
-        <div *ngIf="adList" class="ad-list-items" @adItemAnimation>
+        <div *ngIf="adList.length === 0">Все още няма публикувани обяви... Бъдете първи!</div>
+        <div *ngIf="adList.length > 0" class="ad-list-items" @adItemAnimation>
             <ad-item class="ad-item" *ngFor="
         let ad of adList" [ad]="ad">
             </ad-item>

@@ -12,8 +12,11 @@ const getPagination = (page, size) => {
 // Create and Save a new Ad
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.category) {
-        res.status(400).send({ message: 'Категорията е задължителна!' });
+    if (!req.body.category ||
+        !req.body.description ||
+        !req.body.contactName ||
+        !req.body.contactPhone) {
+        res.status(400).send({ message: 'Полетата, отбелязани със * са задължителни!' });
         return;
     }
     // Create the Ad

@@ -78,14 +78,11 @@ export class AdNewComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList!.length > 0) {
       const file = fileList![0];
-      console.log(file.type);
       this.file = file;
     }
   }
 
   onSubmit(): void {
-    console.log('submit clicked');
-    console.log(this.form.value);
     const formValue = this.form.value;
     const formData = new FormData();
     const userId = this.tokenService.getUser()!.id;
@@ -97,15 +94,31 @@ export class AdNewComponent implements OnInit {
     formData.append('adImage', this.file);
     formData.append('owner', userId);
 
-    console.log(formData.get('adImage'));
-
     this.adService.createAd(formData)
     .subscribe({
       next: (res) => {
-        console.log(res);
         this.isSubmitted = true;
+        console.log(res);
+        if(res.status === 400){
+          this.isSuccessful = false;
+          this.errorMessage = res.error.message;
+        setTimeout(() => this.hideAlert(), 2000);
+        }
+        this.isSuccessful = true;
+        this.router.navigate(['/adlist']);
       },
-      error: err => console.error(err)
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSubmitted = true;
+        this.isSuccessful = false;
+        setTimeout(() => this.hideAlert(), 3000);
+      }
     });
+  }
+
+  hideAlert() {
+    this.isSubmitted = false;
+    this.isSuccessful = false;
+    this.errorMessage = ''
   }
 }

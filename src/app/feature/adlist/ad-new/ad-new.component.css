@@ -12,6 +12,22 @@
     box-shadow: 3px 5px 9px -4px #07004d;
   }
   
+  .ad-form h2{
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .ad-form h2::after{
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    background-color: var(--color-link-default);
+    width: 100%;
+    height: 0.2em;
+  }
+
   
   .ad-form fieldset {
     border: none;
@@ -36,6 +52,10 @@
     border-radius: 0.4em;
     font-size: 1.2em;
     margin: 2em auto;
+  }
+
+  .ad-btn:hover {
+  cursor: pointer;
   }
   
   .text-center {
