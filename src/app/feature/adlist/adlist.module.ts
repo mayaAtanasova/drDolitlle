@@ -6,6 +6,7 @@ import { AdNewComponent } from './ad-new/ad-new.component';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
 
 
+
 @NgModule({
   declarations: [
     AdNewComponent,
@@ -13,7 +14,7 @@ import { AdDetailComponent } from './ad-detail/ad-detail.component';
   ],
   imports: [
     CommonModule,
-    AdlistRoutingModule
+    AdlistRoutingModule,
   ]
 })
 export class AdlistModule { }

@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { IAd } from 'src/app/core/interfaces/ad';
 import { AdsService } from 'src/app/core/services/ads.service';
-import { trigger, transition, state, style, animate } from '@angular/animations';
+import { trigger, transition, state, style, animate, query, stagger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+
 
 @Component({
   selector: 'app-ad-list',
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.css'],
+  animations: [
+    trigger('adItemAnimation', [
+      transition(':enter', [
+        query('.ad-item', [
+          style({opacity: 0, transform: 'translateY(-100px)'}),
+          stagger(30, [
+            animate('500ms cubic-bezier(0.35, 0, 0.25, 1)',
+            style({ opacity: 1, transform: 'none' }))
+          ])
+        ])
+      ])
+    ])
+  ]
 })
 export class AdListComponent implements OnInit {
 

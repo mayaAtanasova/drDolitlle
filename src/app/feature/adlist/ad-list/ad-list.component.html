@@ -29,8 +29,8 @@
 
     <div class="ad-list">
         <h1>Обяви за домашни любимци</h1>
-        <div *ngIf="adList" class="ad-list-items">
-            <ad-item *ngFor="
+        <div *ngIf="adList" class="ad-list-items" @adItemAnimation>
+            <ad-item class="ad-item" *ngFor="
         let ad of adList" [ad]="ad">
             </ad-item>
         </div>
