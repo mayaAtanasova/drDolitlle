@@ -1,1 +1,30 @@
-<p>ad-detail works!</p>
+<div *ngIf="currentAd" class="ad-data">
+    <div class="img-container">
+        <img src="{{currentAd.adImage}}" alt="ad-image">
+    </div>
+
+    <div class="data-container">
+
+        
+        <h2>{{currentAd.category}}</h2>
+        
+        <p>{{currentAd.description}}</p>
+        
+        <p><span>За контакти:</span> {{currentAd.contactName}}</p>
+        <p><span>тел.:</span> {{currentAd.contactPhone}}</p>
+        <p><span>e-mail:</span> {{(currentAd.contactEmail || 'не е предоставен')}}</p>
+        
+        <p><span>Създадена:</span> {{currentAd.createdAt | date: 'd MMMM yyyy г.'}}</p>
+        <p><span>Обновена:</span> {{currentAd.updatedAt | date: 'd MMMM yyyy г.'}}</p>
+        
+        <div *ngIf="isAdmin || isOwner || isModerator" class="buttons">
+            <button 
+            >Редакция</button>
+            <button
+            >Изтриване</button>
+        </div>
+        
+    </div>
+
+</div>
+

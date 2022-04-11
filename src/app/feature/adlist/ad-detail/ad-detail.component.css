@@ -1,0 +1,69 @@
+.ad-data {
+  display: flex;
+  margin: 2em;
+  background-color: var(--color-cards-bgrd);
+  border-radius: var(--border-radius);
+  padding: 2em 1em;
+}
+
+.img-container {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+  margin: 1em;
+  border: 15px solid white;
+  margin-top: 5em;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+}
+
+.data-container {
+  margin-left: 3em;
+}
+
+.data-container h2 {
+    display: inline-block;
+  font-weight: 700;
+  font-size: 2.5em;
+  position: relative;
+  margin: 1.5em 0;
+}
+
+.data-container h2::after {
+  position: absolute;
+  content: "";
+  background-color: var(--color-link-default);
+  width: 100%;
+  height: 0.2em;
+  top: 100%;
+  left: 0;
+}
+
+.data-container p {
+    font-size: 1em;
+}
+.data-container p span {
+    font-weight: bold;
+}
+
+button {
+background-color: var(--color-link-default);
+border: none;
+border-radius: var(--border-radius);
+color: white;
+font-size: 1em;
+padding: 1em 2em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--color-link-hover);
+}
+
+button+button{
+    margin-left: 2em;
+}
