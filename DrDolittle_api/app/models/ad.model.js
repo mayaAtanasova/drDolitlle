@@ -7,7 +7,7 @@ const adSchema = new mongoose.Schema({
     description: { type: String, required: true },
     contactPhone: { type: String, required: true },
     contactEmail: { type: String, required: false },
-    contactName: { type: String, required: false },
+    contactName: { type: String, required: true },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

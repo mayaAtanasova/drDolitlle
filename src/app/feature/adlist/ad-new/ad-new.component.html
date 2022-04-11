@@ -1,6 +1,9 @@
 <section id="ad-form-section">
+    <div *ngIf="isSubmitted && !isSuccessful" class="server-error">
+        <p>{{ errorMessage }}</p>
+    </div>
     <div class="ad-form-container">
-        <form class="ad-form">
+        <form class="ad-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <!-- <fieldset> -->
                 <div class="heading">
                     <h2>Публикуване на обява</h2>
@@ -8,32 +11,84 @@
 
                 <!-- category -->
                 <label for="category">Категория:</label>
-                <select name="category">
+                <select 
+                formControlName="category"
+                [ngClass]="{'input-error': f['category'].touched && f['category'].invalid}">
+                >
                     <option value="0">Изберете от:</option>
                     <option value="Търся">Търся</option>
                     <option value="Продавам">Продавам</option>
                     <option value="Подарявам">Подарявам</option>
                 </select>
+                <div 
+                *ngIf="f['category'].touched && f['category'].errors"
+                class="error">
+                    <div *ngIf="f['category'].errors['required']">Моля изберете категория от менюто!</div>
+                </div>
 
                 <!-- description -->
                 <label for="description">Описание:</label>
-                <textarea name="description" rows="5" cols="10"></textarea>
+                <textarea 
+                formControlName="description" 
+                rows="5" cols="10"
+                [ngClass]="{'input-error': f['description'].touched && f['description'].invalid}">
+                ></textarea>
+                <div 
+                    *ngIf="f['description'].touched && f['description'].errors"
+                    class="error">
+                        <div *ngIf="f['description'].errors['minlength'] || f['description'].errors['maxlength']">Описанието е между 10 и 500 символа.</div>
+                </div>
 
                 <!-- contactName -->
                 <label for="contactName">Лице за контакт:</label>
-                <input type="text" name="contactName" placeholder="Иван Иванов">
+                <input 
+                type="text" 
+                formControlName="contactName" 
+                placeholder="Иван Иванов"
+                [ngClass]="{'input-error': f['contactName'].touched && f['contactName'].invalid}">
+                <div 
+                *ngIf="f['contactName'].touched && f['contactName'].errors"
+                class="error">
+                    <div *ngIf="f['contactName'].errors['required']">Моля въведете лице за контакт!</div>
+                </div>
 
                 <!-- contactEmail -->
                 <label for="email">E-mail:</label>
-                <input type="email" name="email" placeholder="ivan@abv.bg">
+                <input 
+                type="email" 
+                formControlName="contactEmail" 
+                placeholder="ivan@abv.bg"
+                [ngClass]="{'input-error': f['contactEmail'].touched && f['contactEmail'].invalid}">
+                <div 
+                *ngIf="f['contactEmail'].touched && f['contactEmail'].errors"
+                class="error">
+                    <div *ngIf="f['contactEmail'].errors['contactEmail']">Невалиден email адрес!</div>             
+                </div>
 
                 <!-- contactPhone -->
                 <label for="contactPhone">Телефон за контакт:</label>
-                <input type="text" name="contactPhone" placeholder="0888888888">
+                <input 
+                type="text" 
+                formControlName="contactPhone" 
+                placeholder="0888888888"
+                [ngClass]="{'input-error': f['contactPhone'].touched && f['contactPhone'].invalid}">
+                <div 
+                *ngIf="f['contactPhone'].touched && f['contactPhone'].errors"
+                class="error">
+                    <div *ngIf="f['contactPhone'].errors['nrInvalid']">Номерът трябва да започва с 08 и да е общо 10 символа.</div>                  
+                </div>
 
                 <!-- adImage -->
                 <label for="adImage">Добавете снимка по желание:</label>
-                <input type="file" name="adImage">
+                <input 
+                type="file" 
+                formControlName="adImage"
+                (change)="onFileSelect($event)">
+                <div 
+                *ngIf="f['adImage'].touched && f['adImage'].errors"
+                class="error">
+                    <div *ngIf="f['adImage'].errors['requiredFileType']">Снимката трябва да е тип img или png.</div>                  
+                </div>
 
                 <button class="ad-btn">Публикуване</button>
 

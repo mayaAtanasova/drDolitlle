@@ -26,7 +26,7 @@ exports.create = (req, res) => {
         owner: req.body.owner,
     });
     if(req.file && req.file.originalname) {
-        ad.image = req.file.originalname;
+        ad.adImage = req.file.originalname;
     }
     // Save Ad in the database
     ad

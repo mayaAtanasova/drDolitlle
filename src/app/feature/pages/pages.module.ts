@@ -7,7 +7,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdItemComponent } from '../adlist/ad-item/ad-item.component';
 import { AdListComponent } from '../adlist/ad-list/ad-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdNewComponent } from '../adlist/ad-new/ad-new.component';
 
 
 @NgModule({
@@ -17,13 +18,13 @@ import { FormsModule } from '@angular/forms';
     AdminPageComponent,
     AdListComponent,
     AdItemComponent,
-    AdListComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class PagesModule { }
