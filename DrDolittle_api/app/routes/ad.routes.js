@@ -3,19 +3,28 @@ module.exports = app => {
     const router = require('express').Router();
     const multer = require('multer');
 
-    const upload = multer({
-        dest: './app/uploads',
-        filename: (req, file, cb) => {
-            cb(null, file.originalname);
+    // const upload = multer({
+    //     destination: './app/uploads',
+    //     filename: (req, file, cb) => {
+    //         cb(null, file.filename);
+    //     },
+    //     fileFilter: (req, file, cb) => {
+    //         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    //             cb(null, true);
+    //         } else {
+    //             cb(null, false);
+    //         }
+    //     }
+    // });
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, './app/uploads');
         },
-        fileFilter: (req, file, cb) => {
-            if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-                cb(null, true);
-            } else {
-                cb(null, false);
-            }
+        filename: function(req, file, cb) {
+            cb(null, file.originalname);
         }
     });
+    const upload = multer({storage: storage});
 
     // Create a new Ad
     router.post('/', upload.single('adImage'), ads.create);

@@ -7,11 +7,13 @@
   /* --layout-main-width: 60em; */
 
   --color-body-text: #000;
-  --color-body-bgrd: rgb(206, 206, 206);
+  --color-cards-bgrd: #e6e6e6;
   --color-link-default: #AD2A26;
+  --color-link-hover:#b64d4a;
 
-  --color-border-default: rgb(61, 61, 61);
+  --color-inactive-default: rgb(rgb(185, 184, 184), 61, 61);
 
   --spacing-layout-elements: 2em;
 
+  --border-radius: 0.4em;
 }
