@@ -3,6 +3,7 @@ import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/core/interfaces/user';
 import { AdsService } from 'src/app/core/services/ads.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 import { IAd } from '../../../core/interfaces/ad';
@@ -17,23 +18,13 @@ import { requiredFileType } from './required-file-type';
 })
 export class AdNewComponent implements OnInit {
 
-  file: Blob;
-
-  form: FormGroup = new FormGroup({
-    category: new FormControl(''),
-    description: new FormControl(''),
-    contactName: new FormControl(''),
-    contactPhone: new FormControl(''),
-    contactEmail: new FormControl(''),
-    adImage: new FormControl('')
-  });
-
   isSuccessful = false;
   isSubmitted = false;
   errorMessage = '';
   roles: any;
+  viewMode = 'new';
 
-  ad: IAd = {
+  currentAd: IAd = {
     _id: '',
     category: '',
     description: '',
@@ -46,54 +37,26 @@ export class AdNewComponent implements OnInit {
     updatedAt: new Date()
   }
 
+  currentUser: IUser;
+
   constructor(
     private adService: AdsService,
     private router: Router,
-    private formBuilder: FormBuilder,
     private tokenService: TokenStorageService,
   ) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      category: [this.ad.category, [Validators.required]],
-      description: [this.ad.description, [Validators.minLength(10), Validators.maxLength(500)]],
-      contactName: [this.ad.contactName, [Validators.required]],
-      contactPhone: [this.ad.contactPhone,],
-      contactEmail: [this.ad.contactEmail, [Validators.email]],
-      adImage: [null, [requiredFileType()]]
-    },
-      {
-        validators: [PhoneValidation.checkPhoneNumber('contactPhone')]
-      }
-    )
-  }
-
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
-  onFileSelect(event: Event) {
-    const element = event.target as HTMLInputElement;
-    console.log(element);
-    let fileList: FileList | null = element.files;
-    if (fileList!.length > 0) {
-      const file = fileList![0];
-      this.file = file;
+    this.tokenService.currentUser$.subscribe({
+      next: (user) => { if (user) { 
+        this.currentUser = user
+      };
     }
+    })
   }
 
-  onSubmit(): void {
-    const formValue = this.form.value;
-    const formData = new FormData();
-    const userId = this.tokenService.getUser()!.id;
-    formData.append('category', formValue['category'])
-    formData.append('description', formValue['description']);
-    formData.append('contactPhone', formValue['contactPhone']);
-    formData.append('contactEmail', formValue['contactEmail']);
-    formData.append('contactName', formValue['contactName']);
-    formData.append('adImage', this.file);
-    formData.append('owner', userId);
 
+  onSubmit(formData:FormData): void {
+    
     this.adService.createAd(formData)
     .subscribe({
       next: (res) => {
@@ -114,6 +77,7 @@ export class AdNewComponent implements OnInit {
         setTimeout(() => this.hideAlert(), 3000);
       }
     });
+
   }
 
   hideAlert() {
