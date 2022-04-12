@@ -1,62 +1,57 @@
-import { HttpEvent } from '@angular/common/http';
-import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, mergeMap } from 'rxjs';
+import { IAd } from 'src/app/core/interfaces/ad';
 import { IUser } from 'src/app/core/interfaces/user';
 import { AdsService } from 'src/app/core/services/ads.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
-import { IAd } from '../../../core/interfaces/ad';
-import PhoneValidation from './phone-validation';
-import { requiredFileType } from './required-file-type';
-
 
 @Component({
-  selector: 'app-ad-new',
-  templateUrl: './ad-new.component.html',
-  styleUrls: ['./ad-new.component.css']
+  selector: 'app-ad-edit',
+  templateUrl: './ad-edit.component.html',
+  styleUrls: ['./ad-edit.component.css']
 })
-export class AdNewComponent implements OnInit {
+export class AdEditComponent implements OnInit {
 
   isSuccessful = false;
   isSubmitted = false;
   errorMessage = '';
   roles: any;
-  viewMode = 'new';
+  viewMode = 'edit';
 
-  currentAd: IAd = {
-    _id: '',
-    category: '',
-    description: '',
-    contactName: '',
-    contactPhone: '',
-    contactEmail: '',
-    owner: '',
-    adImage: '',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }
+  currentAd: IAd;
 
   currentUser: IUser;
 
   constructor(
     private adService: AdsService,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private tokenService: TokenStorageService,
   ) { }
 
   ngOnInit(): void {
-    this.tokenService.currentUser$.subscribe({
-      next: (user) => { if (user) { 
-        this.currentUser = user
-      };
-    }
+    combineLatest([
+      this.activatedRoute.params.pipe(
+        mergeMap(params => {
+          return this.adService.getAdById(params['adId'])
+        })
+      ),
+      this.tokenService.currentUser$
+    ])
+    .subscribe(([ad, user]) => {
+      if(user){
+        this.currentUser = user;
+        this.currentAd = ad;
+      }
     })
   }
 
   onSubmit(formData:FormData): void {
+
+    console.log(formData.get('description'));
     
-    this.adService.createAd(formData)
+    this.adService.updateAd(this.currentAd._id, formData)
     .subscribe({
       next: (res) => {
         this.isSubmitted = true;
@@ -84,4 +79,5 @@ export class AdNewComponent implements OnInit {
     this.isSuccessful = false;
     this.errorMessage = ''
   }
+
 }

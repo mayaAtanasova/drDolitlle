@@ -27,7 +27,7 @@ export class AdsService {
   createAd(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
-  updateAd(id: string, data: IAd): Observable<IAd> {
+  updateAd(id: string, data: any): Observable<any> {
     return this.http.put<IAd>(`${baseUrl}/${id}`, data);
   }
   deleteAd(id: string): Observable<IAd> {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, mergeMap, Observable, switchMap } from 'rxjs';
 import { IAd } from 'src/app/core/interfaces/ad';
 import { IUser } from 'src/app/core/interfaces/user';
@@ -25,7 +25,8 @@ export class AdDetailComponent implements OnInit {
   constructor(
     private adService: AdsService,
     private tokenService: TokenStorageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -46,6 +47,10 @@ export class AdDetailComponent implements OnInit {
         this.isOwner = this.currentUser.id === this.currentAd.owner;
       }
     })
+  }
+
+  handleEdit(){
+    this.router.navigate([`/adlist//edit/${this.currentAd._id}`]);
   }
 
 }

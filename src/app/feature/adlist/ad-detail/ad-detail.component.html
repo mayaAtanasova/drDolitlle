@@ -19,6 +19,7 @@
         
         <div *ngIf="isAdmin || isOwner || isModerator" class="buttons">
             <button 
+            (click)="handleEdit()"
             >Редакция</button>
             <button
             >Изтриване</button>

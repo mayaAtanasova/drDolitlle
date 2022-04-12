@@ -6,6 +6,7 @@ import { AdNewComponent } from './ad-new/ad-new.component';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdFormComponent } from './ad-form/ad-form.component';
+import { AdEditComponent } from './ad-edit/ad-edit.component';
 
 
 
@@ -13,7 +14,8 @@ import { AdFormComponent } from './ad-form/ad-form.component';
   declarations: [
     AdNewComponent,
     AdDetailComponent,
-    AdFormComponent
+    AdFormComponent,
+    AdEditComponent
   ],
   imports: [
     CommonModule,
