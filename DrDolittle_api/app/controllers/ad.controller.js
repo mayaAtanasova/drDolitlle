@@ -109,10 +109,13 @@ exports.findOne = (req, res) => {
 
 // Update a Ad by the id in the request
 exports.update = (req, res) => {
-    if (!req.body) {
-        return res.status(400).send({
-            message: 'Данните са задължителни!'
-        });
+    // Validate request
+    if (!req.body.category ||
+        !req.body.description ||
+        !req.body.contactName ||
+        !req.body.contactPhone) {
+        res.status(400).send({ message: 'Полетата, отбелязани със * са задължителни!' });
+        return;
     }
     const id = req.params.id;
     Ad.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
@@ -121,7 +124,8 @@ exports.update = (req, res) => {
                 res.status(404).send({
                     message: `Обява с id ${id} не може да бъде обновена. Може би не е намерена!`
                 });
-            } else { res.send({ message: 'Обявата е обновена успешно.' }); }
+            } else { res.send({ 
+                message: 'Обявата е обновена успешно.' }); }
         })
         .catch(err => {
             res.status(500).send({
@@ -137,7 +141,7 @@ exports.delete = (req, res) => {
         .then(data => {
             if (!data) {
                 res.status(404).send({
-                    message: `Обява с id ${id} не може да бъде iztrita. Може би не е намерена!`
+                    message: `Обява с id ${id} не може да бъде изтрита. Може би не е намерена!`
                 });
             } else {
                 res.send({

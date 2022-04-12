@@ -26,7 +26,7 @@ module.exports = app => {
     router.get('/:id', ads.findOne);
 
     // Update an Ad by id
-    router.put('/:id', ads.update);
+    router.put('/:id', upload.single('adImage'), ads.update);
 
     // Delete an Ad by id
     router.delete('/:id', ads.delete);

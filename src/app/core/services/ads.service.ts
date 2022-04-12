@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IAd } from '../interfaces/ad';
 
@@ -28,7 +28,8 @@ export class AdsService {
     return this.http.post(baseUrl, data);
   }
   updateAd(id: string, data: any): Observable<any> {
-    return this.http.put<IAd>(`${baseUrl}/${id}`, data);
+    console.log(data.get('description'));
+    return this.http.put<any>(`${baseUrl}/${id}`, data);
   }
   deleteAd(id: string): Observable<IAd> {
     return this.http.delete<IAd>(`${baseUrl}/${id}`);
