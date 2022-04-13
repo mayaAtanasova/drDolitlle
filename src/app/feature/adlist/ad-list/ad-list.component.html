@@ -8,8 +8,9 @@
         </a>
         </button>
 
-        <button class="add-new-ad" (click)="showMyAds()">
-                Моите обяви
+        <button class="my-ads-btn" (click)="showMyAds()">
+                <p *ngIf="!userId">Моите обяви</p>
+                <p *ngIf="userId">Всички обяви</p>
             </button>
 
     </div>

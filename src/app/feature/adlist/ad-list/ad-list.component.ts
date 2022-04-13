@@ -16,10 +16,10 @@ import { IUser } from 'src/app/core/interfaces/user';
     trigger('adItemAnimation', [
       transition(':enter', [
         query('.ad-item', [
-          style({opacity: 0, transform: 'translateY(-100px)'}),
+          style({ opacity: 0, transform: 'translateY(-100px)' }),
           stagger(300, [
             animate('1000ms cubic-bezier(0.35, 0, 0.25, 1)',
-            style({ opacity: 1, transform: 'none' }))
+              style({ opacity: 1, transform: 'none' }))
           ])
         ])
       ])
@@ -29,7 +29,6 @@ import { IUser } from 'src/app/core/interfaces/user';
 export class AdListComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
-  currentUser: IUser | null = this.tokenStorageService.getUser();
 
   adList: IAd[];
   category = '';
@@ -38,12 +37,13 @@ export class AdListComponent implements OnInit {
   count = 0;
   totPages = [0];
   pageSize = 6;
+  userId = '';
 
   constructor(
     private adService: AdsService,
     private router: Router,
     private tokenStorageService: TokenStorageService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.retrievePaginatedAds();
@@ -53,7 +53,7 @@ export class AdListComponent implements OnInit {
     this.router.navigate(['/adlist/new']);
   }
 
-  getRequestParams(searchCategory: string, page: number, pageSize: number): any {
+  getRequestParams(searchCategory: string, page: number, pageSize: number, userId: string): any {
     let params: any = {};
 
     if (searchCategory) {
@@ -68,11 +68,15 @@ export class AdListComponent implements OnInit {
       params['size'] = pageSize;
     }
 
+    if (userId) {
+      params['owner'] = userId;
+    }
+
     return params;
   }
 
   retrievePaginatedAds(): void {
-    const params = this.getRequestParams(this.category, this.page, this.pageSize);
+    const params = this.getRequestParams(this.category, this.page, this.pageSize, this.userId);
 
     this.adService.getAllAds(params)
       .subscribe({
@@ -93,12 +97,12 @@ export class AdListComponent implements OnInit {
     this.retrievePaginatedAds();
   }
 
-  gotoPrev(){
+  gotoPrev() {
     this.page -= 1;
     this.retrievePaginatedAds();
   }
 
-  gotoNext(){
+  gotoNext() {
     this.page += 1;
     this.retrievePaginatedAds();
   }
@@ -121,11 +125,15 @@ export class AdListComponent implements OnInit {
     this.retrievePaginatedAds();
   }
 
-  showMyAds(){
-   const myAds = this.adList.filter(x => x.owner === this.currentUser?.id);
-   console.log(this.adList);
-   console.log(this.currentUser!.id)
-   console.log(myAds);
+  showMyAds() {
+
+    const currentUser: IUser | null = this.tokenStorageService.getUser();
+    if(this.userId){
+      this.userId = '';
+    } else {
+      this.userId = currentUser!.id;
+    }
+    this.retrievePaginatedAds();
   }
 
 }

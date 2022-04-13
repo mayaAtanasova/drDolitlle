@@ -67,6 +67,16 @@
   background-color: rgb(41, 41, 92);
 }
 
+.add-new button p {
+  font-size: 2em;
+  /* padding-bottom: 0; */
+  padding: 0 2em;
+}
+
+button+button {
+  margin-left: 2em;
+}
+
 /* Ad list */
 
 .ad-list h1 {

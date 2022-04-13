@@ -28,7 +28,7 @@ exports.create = (req, res) => {
         contactName: req.body.contactName,
         owner: req.body.owner,
     });
-    if(req.file && req.file.originalname) {
+    if (req.file && req.file.originalname) {
         console.log(req.file.filename);
         ad.adImage = 'app/uploads/' + req.file.originalname;
     }
@@ -36,7 +36,7 @@ exports.create = (req, res) => {
     ad
         .save()
         .then(data => {
-            const {_doc} = {...data};
+            const { _doc } = { ...data };
             res.send({
                 message: 'Успешно създадохте обява.',
                 _doc
@@ -50,10 +50,18 @@ exports.create = (req, res) => {
         });
 };
 
-// Retrieve all Ads/find by titla from the database.
+// Retrieve all Ads/find by category from the database.
 exports.findAll = (req, res) => {
-    const { page, size, category } = req.query;
-    const condition = category ? { category: { $regex: new RegExp(category), $options: 'i' } } : {};
+    const { page, size, category, owner } = req.query;
+    let condition = {};
+
+    if(category){
+        condition.category = { $regex: new RegExp(category), $options: 'i' };
+    }
+    if(owner){
+        condition.owner = owner;
+    }
+
     const { limit, offset } = getPagination(page, size);
 
     Ad
@@ -76,17 +84,17 @@ exports.findAll = (req, res) => {
 
 exports.findLastThree = (req, res) => {
     Ad
-    .find({})
-    .then(data => {
-        if (!data) {
-            res.status(404).send({ message: 'Не са намерени обяви.'});
-        } else { res.send(data.slice(-3)); };
-    })
-    .catch(err => {
-        res
-            .status(500)
-            .send({ message: 'Грешка при търсене на обява.'});
-    });
+        .find({})
+        .then(data => {
+            if (!data) {
+                res.status(404).send({ message: 'Не са намерени обяви.' });
+            } else { res.send(data.slice(-3)); };
+        })
+        .catch(err => {
+            res
+                .status(500)
+                .send({ message: 'Грешка при търсене на обява.' });
+        });
 };
 
 
@@ -124,8 +132,11 @@ exports.update = (req, res) => {
                 res.status(404).send({
                     message: `Обява с id ${id} не може да бъде обновена. Може би не е намерена!`
                 });
-            } else { res.send({ 
-                message: 'Обявата е обновена успешно.' }); }
+            } else {
+                res.send({
+                    message: 'Обявата е обновена успешно.'
+                });
+            }
         })
         .catch(err => {
             res.status(500).send({
