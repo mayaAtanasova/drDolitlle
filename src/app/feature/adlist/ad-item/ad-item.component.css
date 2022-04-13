@@ -19,15 +19,24 @@
     cursor: pointer;
   }
   
-  .ad-card img {
+  .ad-card .img-container {
     position: absolute;
-    width: 90%;
-    height: 70%;
+    width: 435px;
+    height: 300px;
+    overflow: hidden;
     top: -5%;
-    left: 5%;
+    left: 50%;
+    margin-left: -217.5px;
     background-color: #e6e6e6;
     border-radius: 0.4em;
     border: 2px dashed;
+  }
+
+  .ad-card .img-container img{
+    width: 100%;
+    height: auto;
+    padding: 2em;
+    border: 1em solid white;
   }
   
   .ad-card h3 {
