@@ -128,12 +128,24 @@
 
             <div *ngIf="adList" class="ad-cards" >
                 <ad-item *ngFor="let ad of adList" [ad]="ad"></ad-item>
+                <div class="noads" *ngIf="adList && adList.length === 0">
+                    <h3>В момента няма обяви. Натиснете "Създаване", за да създадете нова!</h3>
+                    <p>*Само за регистрирани потребители</p>
+                </div>
             </div>
 
         </div>
 
-        <div class="btn-holder">
-            <a routerLink="/adlist"><button class="ad-link">Виж всички</button></a>
+        <div *ngIf="adList" class="btn-holder">
+            <a *ngIf="adList.length > 0" routerLink="/adlist">
+                <button class="ad-link">
+                <p>Виж всички</p>
+            </button>
+            </a>
+            <a *ngIf="adList.length === 0" routerLink="/adlist/new">>
+            <button>
+                <p *ngIf="adList.length === 0">Създай нова обява</p>
+            </button></a>
         </div>
 
     </div>

@@ -12,7 +12,7 @@
 
     </div>
 
-    <div class="search-group">
+    <div *ngIf="adList && adList.length > 0" class="search-group">
 
         <select [(ngModel)]="category">
             <option selected value="">Изберете категория:</option>
@@ -29,9 +29,8 @@
 
     </div>
 
-    <div class="ad-list">
+    <div *ngIf="adList && adList.length > 0" class="ad-list">
         <h1>Обяви за домашни любимци</h1>
-        <div *ngIf="adList.length === 0">Все още няма публикувани обяви... Бъдете първи!</div>
         <div *ngIf="adList.length > 0" class="ad-list-items" @adItemAnimation>
             <ad-item class="ad-item" *ngFor="
         let ad of adList" [ad]="ad">
@@ -39,7 +38,7 @@
         </div>
     </div>
 
-    <div class="pagination">
+    <div *ngIf="adList && adList.length > 0" class="pagination">
         <button [disabled]="page === 1" (click)="gotoPrev()">Предишна страница</button>
         <ul>
             <li *ngFor="let pg of totPages" [class.highlighted]="pg === page - 1" (click)="gotoPage($event)">

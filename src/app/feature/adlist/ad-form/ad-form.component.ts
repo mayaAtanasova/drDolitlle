@@ -76,4 +76,7 @@ export class AdFormComponent implements OnInit {
     this.dataCollected.emit(formData);
   }
 
+  checkValidity(){
+    console.log(this.form.invalid)
+  }
 }

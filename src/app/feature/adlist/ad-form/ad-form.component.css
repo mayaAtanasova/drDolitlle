@@ -41,13 +41,19 @@
   width: 100%;
   padding: 1em 7em;
   color: white;
+  border: none;
   border-radius: 0.4em;
   font-size: 1.2em;
   margin: 2em auto;
 }
 
-.ad-btn:hover {
+.ad-btn:not([disabled]):hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.ad-btn:disabled {
+  background-color: grey;
 }
 
 .text-center {

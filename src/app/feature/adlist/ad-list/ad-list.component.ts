@@ -29,7 +29,7 @@ export class AdListComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
 
-  adList: IAd[] = [];
+  adList: IAd[];
   category = '';
 
   page = 1;

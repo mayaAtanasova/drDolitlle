@@ -90,7 +90,12 @@ class="ad-form"
             <div *ngIf="f['adImage'].errors['requiredFileType']">Снимката трябва да е тип img или png.</div>                  
         </div>
 
-        <button class="ad-btn">Публикуване</button>
+        <button
+        class="ad-btn"
+        [disabled]="form.invalid"
+        >
+        Публикуване
+        </button>
 
     <!-- </fieldset> -->
 </form>

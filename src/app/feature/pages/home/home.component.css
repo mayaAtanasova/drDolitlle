@@ -244,6 +244,11 @@ img {
   margin: 0 3em;
 }
 
+.noads {
+  width: 100%;
+text-align: center;
+}
+
 ad-item {
   width: 450px;
 }
@@ -258,6 +263,11 @@ ad-item {
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+.btn-holder button p {
+  padding-bottom: 0;
+  font-size: 1em;
 }
 
 .ad-link {
