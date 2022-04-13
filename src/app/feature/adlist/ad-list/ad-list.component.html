@@ -1,14 +1,16 @@
 <div class="ads-dashboard">
 
-    <div class="add-new">
-        <button class="add-new-ad"
-        *ngIf="(isLoggedIn$ | async)"
-        >
+    <div  *ngIf="(isLoggedIn$ | async)" class="add-new">
+        <button class="add-new-ad">
         <a 
         routerLink="/adlist/new">
             Публикувай нова обява
         </a>
-    </button>
+        </button>
+
+        <button class="add-new-ad" (click)="showMyAds()">
+                Моите обяви
+            </button>
 
     </div>
 

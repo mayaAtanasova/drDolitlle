@@ -5,6 +5,7 @@ import { trigger, transition, state, style, animate, query, stagger } from '@ang
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+import { IUser } from 'src/app/core/interfaces/user';
 
 
 @Component({
@@ -28,6 +29,7 @@ import { TokenStorageService } from 'src/app/core/services/token-storage.service
 export class AdListComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
+  currentUser: IUser | null = this.tokenStorageService.getUser();
 
   adList: IAd[];
   category = '';
@@ -117,6 +119,13 @@ export class AdListComponent implements OnInit {
     console.log(this.category);
     this.page = 1;
     this.retrievePaginatedAds();
+  }
+
+  showMyAds(){
+   const myAds = this.adList.filter(x => x.owner === this.currentUser?.id);
+   console.log(this.adList);
+   console.log(this.currentUser!.id)
+   console.log(myAds);
   }
 
 }
