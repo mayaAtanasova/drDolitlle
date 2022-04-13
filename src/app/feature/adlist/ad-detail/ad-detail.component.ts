@@ -15,6 +15,9 @@ export class AdDetailComponent implements OnInit {
 
   @Input() currentAd:IAd;
 
+  showDialog = false;
+  confirmation = false;
+
   currentUser: IUser;
   isOwner = false;
   isAdmin = false;
@@ -26,7 +29,7 @@ export class AdDetailComponent implements OnInit {
     private adService: AdsService,
     private tokenService: TokenStorageService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -53,4 +56,21 @@ export class AdDetailComponent implements OnInit {
     this.router.navigate([`/adlist//edit/${this.currentAd._id}`]);
   }
 
-}
+  openDialog(){
+    this.showDialog = true;
+  }
+
+  handleDialog(resolution: string){
+    if(resolution === 'yes'){
+      console.log(this.currentAd._id);
+      this.showDialog = false;
+      this.adService.deleteAd(this.currentAd._id)
+      .subscribe({
+        next: () => this.router.navigate(['/adlist'])
+      })
+    } else if(resolution === 'cancel'){
+      console.log('cancelled deletion');
+      this.showDialog = false;
+    }
+    }
+  }

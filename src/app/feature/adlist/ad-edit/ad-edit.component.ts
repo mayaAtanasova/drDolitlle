@@ -48,11 +48,6 @@ export class AdEditComponent implements OnInit {
   }
 
   onSubmit(formData:FormData): void {
-
-    console.log(formData.get('category'));
-    console.log(formData.get('description'));
-    console.log(formData.get('contactPhone'));
-    console.log(this.currentAd._id);
     
     this.adService.updateAd(this.currentAd._id, formData)
     .subscribe({

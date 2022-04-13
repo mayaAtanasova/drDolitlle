@@ -12,12 +12,14 @@ import { UserService } from './services/user.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ConfirmDialogComponent
   ],
 })
 export class CoreModule {

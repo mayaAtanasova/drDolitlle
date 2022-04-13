@@ -1,4 +1,5 @@
 .ad-data {
+  position: relative;
   display: flex;
   margin: 2em;
   background-color: var(--color-cards-bgrd);
@@ -66,4 +67,8 @@ button:hover {
 
 button+button{
     margin-left: 2em;
+}
+
+.dialog-component-container {
+  position: relative;
 }

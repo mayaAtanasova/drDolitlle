@@ -5,10 +5,11 @@ import { NotFoundRoutingModule } from './shared-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     NotFoundRoutingModule
-  ]
+  ],
 })
 export class SharedModule { }

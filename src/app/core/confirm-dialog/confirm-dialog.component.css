@@ -1,0 +1,51 @@
+.dialog-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 2;
+    cursor: pointer; /* Add a pointer on hover */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.dialog-content {
+    background-color: var(--color-cards-bgrd);
+    padding: 2em;
+    border-radius: var(--border-radius);
+    box-shadow: 3px 5px 9px -4px #07004d;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    border-radius: var(--border-radius);
+    color: white;
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+}
+button:hover {
+    cursor: pointer;
+}
+
+button.confirm {
+    background-color: var(--color-link-default);
+}
+
+button.cancel {
+    background-color: rgb(2, 2, 88);
+}
+button+button {
+    margin-left: 2em;
+}

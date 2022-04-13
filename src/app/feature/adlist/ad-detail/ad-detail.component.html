@@ -22,9 +22,14 @@
             (click)="handleEdit()"
             >Редакция</button>
             <button
+            (click)="openDialog()"
             >Изтриване</button>
         </div>
         
+            <confirm-dialog 
+            *ngIf="showDialog" 
+            message="Сигурни ли сте, че искате да изтриете обявата?"
+            (dialogResolution)="handleDialog($event)"></confirm-dialog>
     </div>
 
 </div>
