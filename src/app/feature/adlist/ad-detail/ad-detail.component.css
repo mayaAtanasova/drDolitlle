@@ -16,18 +16,17 @@ justify-content: center;
 }
 
 .img-container {
-  width: 500px;
-  height: 400px;
+  max-width: 450px;
   object-fit: cover;
   overflow: hidden;
   margin: 1em;
-  border: 15px solid white;
   margin-top: 5em;
 }
 
 .img-container img {
   width: 100%;
   height: auto;
+  border: 15px solid white;
 }
 
 .data-container {
@@ -59,6 +58,10 @@ justify-content: center;
     font-weight: bold;
 }
 
+.buttons {
+  display: flex;
+}
+
 button {
 background-color: var(--color-link-default);
 border: none;
@@ -79,4 +82,11 @@ button+button{
 
 .dialog-component-container {
   position: relative;
+}
+
+@media (max-width: 1024px) {
+  .ad-data{
+    flex-direction: column;
+  }
+  
 }

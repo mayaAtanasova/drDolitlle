@@ -1,12 +1,15 @@
 <section id="ad-form-section">
-    <div *ngIf="isSubmitted && !isSuccessful" class="server-error">
-        <p>{{ errorMessage }}</p>
-    </div>
-    <div class="ad-form-container">
-        <ad-form *ngIf="currentAd"
-        [currentAd]="currentAd"
-        [currentUser]="currentUser"
-        (dataCollected)="onSubmit($event)"
-        ></ad-form>
+    <div class="wrapper">
+
+        <div *ngIf="isSubmitted && !isSuccessful" class="server-error">
+            <p>{{ errorMessage }}</p>
+        </div>
+        <div class="ad-form-container">
+            <ad-form *ngIf="currentAd"
+            [currentAd]="currentAd"
+            [currentUser]="currentUser"
+            (dataCollected)="onSubmit($event)"
+            ></ad-form>
+        </div>
     </div>
 </section>

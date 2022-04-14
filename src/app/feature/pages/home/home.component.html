@@ -131,15 +131,15 @@
 
         </div>
 
-        <div *ngIf="adList" class="btn-holder">
-            <a *ngIf="adList.length > 0" routerLink="/adlist">
+        <div class="btn-holder">
+            <a *ngIf="adList && adList.length > 0" routerLink="/adlist">
                 <button class="ad-link">
                 <p>Виж всички</p>
             </button>
             </a>
-            <a *ngIf="adList.length === 0" routerLink="/adlist/new">>
-            <button>
-                <p *ngIf="adList.length === 0">Създай нова обява</p>
+            <a routerLink="/adlist/new">>
+            <button class="ad-link">
+                <p>Създай нова обява</p>
             </button></a>
         </div>
 

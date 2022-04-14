@@ -257,7 +257,7 @@ ad-item {
 
 .btn-holder {
   display: flex;
-  justify-content: end;
+  gap: 2em;
 }
 
 .btn-holder a {
