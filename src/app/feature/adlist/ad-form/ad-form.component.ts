@@ -46,6 +46,7 @@ export class AdFormComponent implements OnInit {
         validators: [PhoneValidation.checkPhoneNumber('contactPhone')]
       }
     )
+    this.localImgUrl = this.currentAd.adImage!;
   }
 
   get f(): { [key: string]: AbstractControl } {
