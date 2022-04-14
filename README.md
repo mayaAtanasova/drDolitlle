@@ -5,7 +5,7 @@ A single-page application.
 
 
 ## Back-end
-Back-end developed with Node.js and Express.  The back-end takes care of user authentication and authorisation through JWT.  The user and pet listing data is kept in a MongoDB non-relational database.
+Back-end developed with Node.js and Express.  The back-end takes care of user authentication and authorisation through JWT.  The user and pet listing data is kept in a MongoDB non-relational database.  The logo design, as well as the overall UI/UX design have be done by me as well.
 
 ## Front-end
 Front-end developd with Angular, implementing routing, route guards, front-end authentication, authorisation and data validation.
@@ -17,6 +17,7 @@ The system is role-based.
 * Registered users can additionally edit and delete their own listings
 * The users registered as moderators can edit or delete all listings
 * The user with role admin can can edit or delete all listings, as well as has access to the admin page to administer other services (future development)
+* An HttpInterceptor is implemented to attach teh authentication token with every request.
 
 ### Route guards and redirects
 * The admin user is redirected to teh admin page after login, non-admin users cannot navigate to the admin page manually
