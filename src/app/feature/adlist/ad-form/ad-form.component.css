@@ -3,6 +3,7 @@
   border: none;
   border-radius: 0.4em;
   box-shadow: 3px 5px 9px -4px #07004d;
+  width: 90%;
 }
 
 .ad-form h2 {
@@ -34,6 +35,71 @@
   background-color: rgba(7, 0, 77, 0.1);
   padding: 0.2em;
   resize: none;
+}
+
+.file{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-top: 2em;
+  border-radius: var(--border-radius);
+}
+
+.file:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.file > input[type="file"] {
+  position:absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.file > label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: var(--color-link-default);
+  color: #fff;
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.selected-file{
+margin-top: 1em;
+display: flex;
+align-items: center;
+gap: 1em;
+}
+
+.selected-file img {
+  width: 200px;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.selected-file button {
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--color-link-default);
+  color: white;
+  padding: 1em;
+  font-size: 0.8em;
+  height: 3em;
+}
+
+.selected-file button :hover{
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .ad-btn {

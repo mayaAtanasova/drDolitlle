@@ -79,11 +79,22 @@ class="ad-form"
         </div>
 
         <!-- adImage -->
-        <label for="adImage">Добавете снимка по желание:</label>
-        <input 
-        type="file" 
-        formControlName="adImage"
-        (change)="onFileSelect($event)">
+        <div class="file">
+
+            <label for="adImage">
+                Добавете снимка
+            </label>
+            <input 
+            type="file" 
+            formControlName="adImage"
+            (change)="onFileSelect($event)"
+            title=""
+            >
+        </div>
+        <div *ngIf="localImgUrl" class="selected-file">
+            <img [src]="localImgUrl" >
+            <button (click)="removeImage($event)">Премахнете снимката</button>
+        </div>
         <div 
         *ngIf="f['adImage'].touched && f['adImage'].errors"
         class="error">

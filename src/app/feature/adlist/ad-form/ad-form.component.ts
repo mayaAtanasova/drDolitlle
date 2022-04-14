@@ -18,7 +18,8 @@ export class AdFormComponent implements OnInit {
 
   @Output() dataCollected: EventEmitter<any> = new EventEmitter;
 
-  file: Blob;
+  file: Blob | null;
+  localImgUrl: string | ArrayBuffer | null;
 
   form: FormGroup = new FormGroup({
     category: new FormControl(''),
@@ -53,15 +54,19 @@ export class AdFormComponent implements OnInit {
 
   onFileSelect(event: Event) {
     const element = event.target as HTMLInputElement;
-    console.log(element);
     let fileList: FileList | null = element.files;
     if (fileList!.length > 0) {
       const file = fileList![0];
       this.file = file;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.localImgUrl = reader.result;
+      }
     }
   }
 
-  onSubmitButtonPressed(){
+  onSubmitButtonPressed() {
     const formValue = this.form.value;
     const formData = new FormData();
     const userId = this.currentUser.id;
@@ -70,13 +75,15 @@ export class AdFormComponent implements OnInit {
     formData.append('contactPhone', formValue['contactPhone']);
     formData.append('contactEmail', formValue['contactEmail']);
     formData.append('contactName', formValue['contactName']);
-    formData.append('adImage', this.file);
+    formData.append('adImage', this.file!);
     formData.append('owner', userId);
 
     this.dataCollected.emit(formData);
   }
 
-  checkValidity(){
-    console.log(this.form.invalid)
+  removeImage(event:any) {
+    event.preventDefault();
+    this.file = null;
+    this.localImgUrl = '';
   }
 }
