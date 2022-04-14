@@ -5,7 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AdItemComponent } from '../adlist/ad-item/ad-item.component';
+import { AdItemComponent } from '../../shared/ad-item/ad-item.component';
 import { AdListComponent } from '../adlist/ad-list/ad-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdNewComponent } from '../adlist/ad-new/ad-new.component';
@@ -16,8 +16,6 @@ import { AdNewComponent } from '../adlist/ad-new/ad-new.component';
     HomeComponent,
     PageNotFoundComponent,
     AdminPageComponent,
-    AdListComponent,
-    AdItemComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +23,7 @@ import { AdNewComponent } from '../adlist/ad-new/ad-new.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ]
 })
 export class PagesModule { }

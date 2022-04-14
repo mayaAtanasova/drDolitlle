@@ -1,0 +1,11 @@
+<div 
+class="ad-card"
+(click)="gotoDetails(ad._id)"
+>
+<div class="img-container">
+    <img class="ad-img" src="{{ad.adImage}}" />
+</div>
+    <h3>{{ad.category}}</h3>
+    <p>{{(ad.description) }}</p>
+    <p class="more">Подробности <span>&rarr;</span></p>
+</div>

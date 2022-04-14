@@ -13,7 +13,7 @@ import { TokenStorageService } from 'src/app/core/services/token-storage.service
 })
 export class AdDetailComponent implements OnInit {
 
-  @Input() currentAd:IAd;
+  currentAd:IAd;
 
   showDialog = false;
   confirmation = false;
@@ -42,9 +42,9 @@ export class AdDetailComponent implements OnInit {
       this.tokenService.currentUser$
     ])
     .subscribe(([ad, user]) => {
+      this.currentAd = ad;
       if(user){
         this.currentUser = user;
-        this.currentAd = ad;
         this.isAdmin = user.roles.includes('ROLE_ADMIN');
         this.isModerator = user.roles.includes('ROLE_MODERATOR');
         this.isOwner = this.currentUser.id === this.currentAd.owner;

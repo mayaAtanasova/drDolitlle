@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { AdlistRoutingModule } from './adlist-routing.module';
 import { AdNewComponent } from './ad-new/ad-new.component';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdFormComponent } from './ad-form/ad-form.component';
 import { AdEditComponent } from './ad-edit/ad-edit.component';
-import { ConfirmDialogComponent } from 'src/app/core/confirm-dialog/confirm-dialog.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { AdListComponent } from './ad-list/ad-list.component';
+import { AdItemComponent } from '../../shared/ad-item/ad-item.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { CoreModule } from 'src/app/core/core.module';
     AdDetailComponent,
     AdFormComponent,
     AdEditComponent,
-
+    AdListComponent,
   ],
   imports: [
     CommonModule,
     AdlistRoutingModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class AdlistModule { }
