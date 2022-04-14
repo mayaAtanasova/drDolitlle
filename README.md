@@ -10,7 +10,7 @@ Back-end developed with Node.js and Express.  The back-end takes care of user au
 ## Front-end
 Front-end developd with Angular, implementing routing, route guards, front-end authentication, authorisation and data validation.
 
-##Features
+## Features
 ### Authentication and authorization
 The system is role-based.
 * Unauthenticated users can brouse the home page and pet listings
