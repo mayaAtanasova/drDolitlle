@@ -5,6 +5,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -19,9 +20,12 @@ export class FooterComponent implements OnInit {
   faFacebook = faFacebook;
   faInstagram = faInstagram;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  public onClick(elementId: string): void {
+    this.router.navigate(['/home'], { fragment: elementId });
+  }
 }

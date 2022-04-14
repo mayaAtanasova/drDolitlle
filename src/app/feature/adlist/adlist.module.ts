@@ -9,7 +9,6 @@ import { AdFormComponent } from './ad-form/ad-form.component';
 import { AdEditComponent } from './ad-edit/ad-edit.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { AdListComponent } from './ad-list/ad-list.component';
-import { AdItemComponent } from '../../shared/ad-item/ad-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
@@ -28,6 +27,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CoreModule,
     FormsModule,
     SharedModule
-  ]
+  ],
+
 })
 export class AdlistModule { }
