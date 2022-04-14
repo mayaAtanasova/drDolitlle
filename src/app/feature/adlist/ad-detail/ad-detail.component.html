@@ -1,3 +1,6 @@
+<div *ngIf="!currentAd">
+    <app-spinner></app-spinner>
+</div>
 <div *ngIf="currentAd" class="ad-data">
     <div class="img-container">
         <img src="{{currentAd.adImage}}" alt="ad-image">

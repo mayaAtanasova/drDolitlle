@@ -1,4 +1,7 @@
 <div class="ads-dashboard">
+    <div *ngIf="!adList" class="loader">
+        <!-- <app-spinner></app-spinner> -->
+    </div>
 
     <div  *ngIf="(isLoggedIn$ | async)" class="add-new">
         <button class="add-new-ad">

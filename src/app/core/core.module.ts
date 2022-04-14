@@ -13,6 +13,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     HeaderComponent,
     FooterComponent,
     ConfirmDialogComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
   exports: [
     HeaderComponent,
     FooterComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SpinnerComponent
   ],
 })
 export class CoreModule {
