@@ -12,16 +12,12 @@ import { UserService } from './services/user.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtModule, JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ConfirmDialogComponent,
-    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -31,8 +27,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    ConfirmDialogComponent,
-    SpinnerComponent
   ],
 })
 export class CoreModule {
