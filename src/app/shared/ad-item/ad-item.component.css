@@ -21,7 +21,7 @@
   
   .ad-card .img-container {
     position: absolute;
-    width: 435px;
+    max-width: 435px;
     height: 300px;
     overflow: hidden;
     top: -5%;
@@ -35,7 +35,6 @@
   .ad-card .img-container img{
     width: 100%;
     height: auto;
-    padding: 2em;
     border: 1em solid white;
   }
   

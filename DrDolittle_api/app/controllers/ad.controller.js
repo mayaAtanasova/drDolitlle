@@ -29,7 +29,7 @@ exports.create = (req, res) => {
         owner: req.body.owner,
     });
     if (req.file && req.file.originalname) {
-        console.log(req.file.filename);
+        // console.log(req.file.filename);
         ad.adImage = 'app/uploads/' + req.file.originalname;
     }
     // Save Ad in the database
@@ -124,6 +124,10 @@ exports.update = (req, res) => {
         !req.body.contactPhone) {
         res.status(400).send({ message: 'Полетата, отбелязани със * са задължителни!' });
         return;
+    }
+    if (req.file && req.file.originalname) {
+        // console.log(req.file.filename);
+        req.body.adImage = 'app/uploads/' + req.file.originalname;
     }
     const id = req.params.id;
     Ad.findByIdAndUpdate(id, req.body, { useFindAndModify: false })

@@ -71,6 +71,7 @@ export class AdFormComponent implements OnInit {
     const formValue = this.form.value;
     const formData = new FormData();
     const userId = this.currentUser.id;
+    console.log(this.file);
     formData.append('category', formValue['category'])
     formData.append('description', formValue['description']);
     formData.append('contactPhone', formValue['contactPhone']);

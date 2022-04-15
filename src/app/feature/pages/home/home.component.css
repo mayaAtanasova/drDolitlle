@@ -25,7 +25,7 @@ h2::after {
   background-color: rgb(2, 2, 27);
   background-image: url(/assets/home_bkg1.png);
   background-repeat: no-repeat;
-  object-fit:cover;
+  object-fit: cover;
 }
 
 .home-contents {
@@ -73,7 +73,6 @@ h2::after {
   height: 100%;
 }
 
-
 /*About*/
 .about-contents {
   position: relative;
@@ -84,7 +83,7 @@ h2::after {
 
 .about-contents::after {
   position: absolute;
-  content: '';
+  content: "";
   background-image: url(/assets/logo_notext.svg);
   background-repeat: no-repeat;
   background-position: left;
@@ -312,9 +311,16 @@ ad-item {
 
 /* Responsive */
 @media (max-width: 600px) {
-
   #home {
-  background-size: 100%;
+    background-size: 100%;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .text h3 {
+    width: 90%;
   }
 
   #home h1:first-of-type {
@@ -324,9 +330,9 @@ ad-item {
     flex-direction: column;
   }
 
-.shape-divider {
-  bottom: -9.5%;
-}
+  .shape-divider {
+    bottom: -9.5%;
+  }
 
   #services {
     height: 100%;
@@ -337,11 +343,9 @@ ad-item {
     background-repeat: repeat-y;
   }
 
-  .service-cards {
-    flex-direction: column;
-  }
-
-  .ad-cards {
+  .service-cards,
+  .ad-cards,
+  .btn-holder {
     flex-direction: column;
   }
 }

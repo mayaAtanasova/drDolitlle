@@ -48,6 +48,7 @@ export class AdEditComponent implements OnInit {
   }
 
   onSubmit(formData:FormData): void {
+    console.log(formData.get('adImage'));
     
     this.adService.updateAd(this.currentAd._id, formData)
     .subscribe({
