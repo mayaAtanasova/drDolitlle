@@ -1,7 +1,10 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const dbConfig = require('./app/config/db.config');
 const db = require('./app/models');
 const Role = db.role;
 const path = __dirname + '/app/views';
@@ -37,7 +40,7 @@ app.listen(PORT, () => {
 });
 
 db.mongoose
-    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+    .connect(process.env.DATABASE_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

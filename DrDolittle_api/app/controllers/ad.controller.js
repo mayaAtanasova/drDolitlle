@@ -32,6 +32,7 @@ exports.create = (req, res) => {
         // console.log(req.file.filename);
         ad.adImage = 'app/uploads/' + req.file.originalname;
     }
+    console.log(ad.adImage);
     // Save Ad in the database
     ad
         .save()
@@ -77,7 +78,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || 'Some error occurred while retrieving Ads.'
+                    err.message || 'Грешка при зареждането на обявите.'
             });
         });
 };
@@ -126,8 +127,9 @@ exports.update = (req, res) => {
         return;
     }
     if (req.file && req.file.originalname) {
-        // console.log(req.file.filename);
         req.body.adImage = 'app/uploads/' + req.file.originalname;
+    } else {
+        req.body.adImage = '/assets/ad_img.png';
     }
     const id = req.params.id;
     Ad.findByIdAndUpdate(id, req.body, { useFindAndModify: false })

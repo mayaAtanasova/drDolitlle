@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IAd } from '../interfaces/ad';
+import { IAdBase } from '../interfaces/ad-base';
 
 const baseUrl = 'http://localhost:8080/adlist';
 @Injectable({
@@ -27,8 +28,7 @@ export class AdsService {
   createAd(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
-  updateAd(id: string, data: any): Observable<any> {
-    console.log(data.get('description'));
+  updateAd(id: string, data: FormData): Observable<any> {
     return this.http.put<any>(`${baseUrl}/${id}`, data);
   }
   deleteAd(id: string): Observable<IAd> {

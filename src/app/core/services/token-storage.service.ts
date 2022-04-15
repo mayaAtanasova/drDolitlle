@@ -21,10 +21,8 @@ export class TokenStorageService {
   constructor(public jwtHelper: JwtHelperService) { }
 
   logout(): void {
-    console.log('logout called')
     window.localStorage.clear();
     this._currentUser.next(null);
-    console.log(this.isLoggedIn$)
   }
 
   public saveToken(token: string): void {

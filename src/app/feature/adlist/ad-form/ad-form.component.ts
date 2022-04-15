@@ -21,14 +21,7 @@ export class AdFormComponent implements OnInit {
   file: Blob | null;
   localImgUrl: string | ArrayBuffer | null;
 
-  form: FormGroup = new FormGroup({
-    category: new FormControl(''),
-    description: new FormControl(''),
-    contactName: new FormControl(''),
-    contactPhone: new FormControl(''),
-    contactEmail: new FormControl(''),
-    adImage: new FormControl('')
-  });
+  form: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder) { }

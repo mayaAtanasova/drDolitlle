@@ -53,7 +53,7 @@ export class AdDetailComponent implements OnInit {
   }
 
   handleEdit(){
-    this.router.navigate([`/adlist//edit/${this.currentAd._id}`]);
+    this.router.navigate([`/adlist/edit/${this.currentAd._id}`]);
   }
 
   openDialog(){

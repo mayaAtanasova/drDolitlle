@@ -38,7 +38,7 @@ h2::after {
   border: none;
 }
 
-.registration-form label{
+.login-form label{
   margin: 1em 0 0.2em 0;
   display: inline-block;
   }
