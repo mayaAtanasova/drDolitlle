@@ -26,12 +26,21 @@ exports.register = (req, res) => {
                         return;
                     }
                     user.roles = roles.map(role => role._id);
+                    const authorities = [`ROLE_${req.body.roles[0].toUpperCase()}`];
+                    const token = jwt.sign({ id: user._id, isAdmin: true }, config.secret, {
+                        expiresIn: 86400 // 24 hours
+                    });
                     user.save(err => {
                         if (err) {
                             res.status(500).send({ message: err });
                             return;
                         }
-                        res.send({ message: 'Успешно регистриран потребител!' });
+                        res.status(200).send({
+                            id: user._id,
+                            email: user.email,
+                            roles: authorities,
+                            accessToken: token
+                        });
                     });
                 }
             );
@@ -42,26 +51,16 @@ exports.register = (req, res) => {
                     return;
                 }
                 user.roles = [role._id];
-                user
-                .save(err => {
+                const authorities = ['ROLE_USER'];
+                const token = jwt.sign({ id: user._id, isAdmin: false }, config.secret, {
+                    expiresIn: 86400 // 24 hours
+                });
+
+                user.save(err => {
                     if (err) {
                         res.status(500).send({ message: err });
                         return;
                     }
-                    res.send({ message: 'Успешно регистриран потребител!' });
-                });
-            });
-            User
-            .findOne({
-                email: req.body.email
-            })
-                .populate('roles', '-__v')
-                .exec((err, user) => {
-                    const token = jwt.sign({ id: user.id }, config.secret, {
-                        expiresIn: 86400 // 24 hours
-                    });
-                    const authorities = ['ROLE_USER'];
-
                     res.status(200).send({
                         id: user._id,
                         email: user.email,
@@ -69,6 +68,7 @@ exports.register = (req, res) => {
                         accessToken: token
                     });
                 });
+            });
         }
     });
 };
@@ -97,7 +97,11 @@ exports.login = (req, res) => {
                     message: 'Не е открит потребител с това име/парола!'
                 });
             }
-            const token = jwt.sign({ id: user.id }, config.secret, {
+            const userRoles = user.roles.map(role => role.name);
+            const isAdmin = userRoles.includes('admin');
+            console.log(userRoles)
+            console.log(isAdmin);
+            const token = jwt.sign({ id: user._id, isAdmin: isAdmin }, config.secret, {
                 expiresIn: 86400 // 24 hours
             });
             const authorities = [];

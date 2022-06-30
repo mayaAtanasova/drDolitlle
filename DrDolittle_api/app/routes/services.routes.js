@@ -13,10 +13,7 @@ module.exports = app => {
     router.put('/:id', verifyToken, isAdmin, services.update);
 
     // Delete a Service by id
-    router.delete('/:id', verifyToken, isAdmin, ads.delete);
+    router.delete('/:id', verifyToken, isAdmin, services.delete);
 
-    // Delete All Ads
-    router.delete('/', ads.deleteAll);
-
-    app.use('/adlist', router);
+    app.use('/servicelist', router);
 };

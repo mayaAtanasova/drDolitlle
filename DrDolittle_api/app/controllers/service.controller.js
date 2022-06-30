@@ -83,3 +83,21 @@ exports.update = (req, res) => {
             });
         });
 }
+
+exports.delete = (req, res) => {
+    Service
+        .findByIdAndRemove(req.params.id)
+        .then(data => {
+            const { _doc } = { ...data };
+            res.send({
+                message: 'Успешно изтрихте услугата.',
+                _doc
+            });
+        }).catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || 'Грешка при изтриването на услугата'
+            });
+        }
+        );
+}
