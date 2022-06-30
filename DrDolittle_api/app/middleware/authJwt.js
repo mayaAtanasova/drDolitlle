@@ -19,32 +19,57 @@ const verifyToken = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-    User.findById(req.userId).exec((err, user) => {
+
+    let token = req.headers['x-access-token'];
+
+    if (!token) {
+        return res.status(403).send({ message: 'No token provided!' });
+    };
+
+    const decoded = jwt.decode(token);
+    console.log(decoded);
+
+    User.findById(decoded.id, (err, user) => {
         if (err) {
-            res.status(500).send({ message: err });
-            return;
+            return res.status(500).send({ message: 'Error finding user' });
         }
-        Role.find(
-            {
-                _id: { $in: user.roles }
-            },
-            (err, roles) => {
-                if (err) {
-                    res.status(500).send({ message: err });
-                    return;
-                }
-                for (let i = 0; i < roles.length; i++) {
-                    if (roles[i].name === 'admin') {
-                        next();
-                        return;
-                    }
-                }
-                res.status(403).send({ message: 'Require Admin Role!' });
-                return;
-            }
-        );
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+        if (user.roleId !== 1) {
+            return res.status(401).send({ message: 'Unauthorized!' });
+        }
+        next();
     });
 };
+
+// const isAdmin = (req, res, next) => {
+//     User.findById(req.userId).exec((err, user) => {
+//         if (err) {
+//             res.status(500).send({ message: err });
+//             return;
+//         }
+//         Role.find(
+//             {
+//                 _id: { $in: user.roles }
+//             },
+//             (err, roles) => {
+//                 if (err) {
+//                     res.status(500).send({ message: err });
+//                     return;
+//                 }
+//                 for (let i = 0; i < roles.length; i++) {
+//                     if (roles[i].name === 'admin') {
+//                         next();
+//                         return;
+//                     }
+//                 }
+//                 res.status(403).send({ message: 'Require Admin Role!' });
+//                 return;
+//             }
+//         );
+//     });
+// };
 
 const isModerator = (req, res, next) => {
     User.findById(req.userId).exec((err, user) => {
@@ -76,6 +101,6 @@ const isModerator = (req, res, next) => {
 const authJwt = {
     verifyToken,
     isAdmin,
-    isModerator
+    isModerator,
 };
 module.exports = authJwt;

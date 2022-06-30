@@ -29,10 +29,8 @@ exports.create = (req, res) => {
         owner: req.body.owner,
     });
     if (req.file && req.file.originalname) {
-        // console.log(req.file.filename);
         ad.adImage = 'app/uploads/' + req.file.originalname;
     }
-    console.log(ad.adImage);
     // Save Ad in the database
     ad
         .save()

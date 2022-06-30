@@ -17,7 +17,7 @@ export class RoleGuard implements CanActivate {
       isAdmin = loggedUser.roles.includes('ROLE_ADMIN');
     }
     if(!isAdmin){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
       return false;
     }
     return true;

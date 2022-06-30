@@ -32,6 +32,7 @@ app.get('/app/uploads/:id', (req, res) => {
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/ad.routes')(app);
+require('./app/routes/services.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
