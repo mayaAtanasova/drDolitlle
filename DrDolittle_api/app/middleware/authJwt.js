@@ -6,7 +6,6 @@ const Role = db.role;
 
 const verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'];
-    // console.log(token);
     if (!token) {
         return res.status(403).send({ message: 'No token provided!' });
     }
@@ -28,7 +27,6 @@ const isAdmin = (req, res, next) => {
     };
 
     const decoded = jwt.decode(token);
-    console.log(decoded);
     if(!decoded.isAdmin) {
         return res.status(401).send({ message: 'Unauthorized!' });
 
@@ -49,6 +47,5 @@ const isAdmin = (req, res, next) => {
 const authJwt = {
     verifyToken,
     isAdmin,
-    isModerator,
 };
 module.exports = authJwt;
