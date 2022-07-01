@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IAd } from '../interfaces/ad';
-import { IAdBase } from '../interfaces/ad-base';
 
 const baseUrl = 'http://localhost:8080/adlist';
+
 @Injectable({
   providedIn: 'root'
 })

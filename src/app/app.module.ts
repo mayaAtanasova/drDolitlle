@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServicelistModule } from './feature/servicelist/servicelist.module';
 
 registerLocaleData(localeBg, 'bg')
 
@@ -36,7 +37,7 @@ registerLocaleData(localeBg, 'bg')
     PagesModule,
     SharedModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'bg' }

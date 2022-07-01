@@ -40,11 +40,7 @@ exports.findAll = (req, res) => {
     Service
         .find({})
         .then(data => {
-            const { _doc } = { ...data };
-            res.send({
-                message: 'Успешно получихте услугите.',
-                _doc
-            });
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
