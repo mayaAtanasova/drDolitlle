@@ -25,6 +25,19 @@ export class ServiceItemComponent implements OnInit {
   valid: any = {};
   dataSource = new MatTableDataSource<IService>();
 
+
+  titles: { [key: string] : string } = {
+    manipulation: 'Манипулации',
+    hospis: 'Стационар',
+    surgery: 'Хирургия',
+    exam: 'Прегледи',
+    lab: 'Изследвания',
+    deworm: 'Обезпаразитяване',
+    vaccine: 'Ваксинация',
+    groom: 'Подстригване',
+    administration: 'Администрация',
+  };
+
   constructor() { }
 
   ngOnInit(): void {
@@ -53,7 +66,7 @@ export class ServiceItemComponent implements OnInit {
     this.submitRowForEdit.emit(row);
   };
 
-  onRemoveRow(id: number) {
+  onRemoveRow(id: string) {
     this.submitRowForDeletion.emit(id);
   }
 

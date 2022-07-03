@@ -21,11 +21,7 @@ exports.create = (req, res) => {
     service
         .save()
         .then(data => {
-            const { _doc } = { ...data };
-            res.send({
-                message: 'Успешно създадохте услуга.',
-                _doc
-            });
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
@@ -66,11 +62,7 @@ exports.update = (req, res) => {
             price: req.body.price,
         })
         .then(data => {
-            const { _doc } = { ...data };
-            res.send({
-                message: 'Успешно редактирахте услугата.',
-                _doc
-            });
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
@@ -81,6 +73,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
+    console.log(req.params.id)
     Service
         .findByIdAndRemove(req.params.id)
         .then(data => {

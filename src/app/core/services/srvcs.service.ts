@@ -19,15 +19,15 @@ export class ServicesService {
   }
 
   updateService(service: IService): Observable<IService> {
-    return this.http.patch<IService>(`${baseUrl}/${service._id}`, service);
+    return this.http.put<IService>(`${baseUrl}/${service._id}`, service);
   }
 
   addService(service: IService): Observable<IService> {
     return this.http.post<IService>(`${baseUrl}`, service);
   }
 
-  deleteService(id: number): Observable<IService[]> {
-    return this.http.delete<IService[]>(`${baseUrl}/${id}`);
+  deleteService(id: string): Observable<IService> {
+    return this.http.delete<IService>(`${baseUrl}/${id}`);
   }
 
   deleteServices(services: IService[]): Observable<IService[]> {

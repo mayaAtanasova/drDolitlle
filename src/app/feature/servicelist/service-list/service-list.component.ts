@@ -25,19 +25,20 @@ export class ServiceListComponent implements OnInit {
 
   editRow(row: IService) {
     if (row._id === '') {
-      this.servicesService.addService(row).subscribe((newService: IService) => {
-        console.log(row);
-        row._id = newService._id;
+      this.servicesService.addService(row).subscribe((data: IService) => {
+        this.allTableData.push(data);
+        row._id = data._id;
         row.isEdit = false;
       });
     } else {
-      this.servicesService.updateService(row).subscribe(() => (row.isEdit = false));
+      this.servicesService.updateService(row).subscribe((data: IService) => (row.isEdit = false));
     }
   }
 
-  deleteRow(id: number) {
+  deleteRow(id: string) {
+    console.log('data id to delete' + id)
     this.servicesService.deleteService(id).subscribe(data => {
-      this.allTableData = data;
+      this.allTableData = this.allTableData.filter(item => item._id !== data._id);
     });
   }
 
@@ -54,7 +55,7 @@ export class ServiceListComponent implements OnInit {
     //         );
     //       });
     //     }
-      // });
+    // });
   }
 
 
