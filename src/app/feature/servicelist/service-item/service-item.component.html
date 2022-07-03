@@ -1,7 +1,7 @@
 <section class="service-section">
     <article class="table-header">
         <div>
-            <h4>{{title}}</h4>
+            <h4>{{category}}</h4>
             <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">
                 Изтрий избраните редове
             </button>
@@ -11,7 +11,7 @@
         </div>
     </article>
 
-    <table mat-table [dataSource]="tableData">
+    <table mat-table [dataSource]="dataSource">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <th mat-header-cell *matHeaderCellDef>
                 {{ col.label }}
@@ -43,10 +43,10 @@
                             Готово
                         </button>
                     </div>
-                    <!-- <mat-form-field class="form-input" *ngSwitchDefault>
+                    <mat-form-field class="form-input" *ngSwitchDefault>
                         <input matInput [required]="col.required" [pattern]="col.pattern" [type]="col.type"
                             [(ngModel)]="element[col.key]" (change)="inputHandler($event, element.id, col.key)" />
-                    </mat-form-field> -->
+                    </mat-form-field>
                 </div>
             </td>
         </ng-container>

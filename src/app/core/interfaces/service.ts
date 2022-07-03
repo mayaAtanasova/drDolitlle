@@ -1,7 +1,9 @@
 import { IServiceBase } from './service-base';
 
 export interface IService extends IServiceBase {
-    _id: string,
+    _id: string;
+    isEdit: boolean;
+    isSelected: boolean;
 }
 
 export const ServiceColumns = [

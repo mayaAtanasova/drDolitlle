@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ServiceItemComponent } from './service-item/service-item.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ServiceItemComponent } from './service-item/service-item.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ServicelistRoutingModule,
     CoreModule,
     SharedModule,
