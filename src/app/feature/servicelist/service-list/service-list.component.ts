@@ -14,37 +14,31 @@ export class ServiceListComponent implements OnInit {
 
   allTableData: IService[] = [];
 
-
   constructor(public dialog: MatDialog, private servicesService: ServicesService) { }
 
   ngOnInit(): void {
     this.servicesService.getAllServices().subscribe(data => {
-
       this.allTableData = data;
-      console.log(this.allTableData)
     }
     );
   }
 
   editRow(row: IService) {
-    // if (row.id === 0) {
-    //   this.userService.addUser(row).subscribe((newUser: User) => {
-    //     row.id = newUser.id;
-    //     row.isEdit = false;
-    //   });
-    // } else {
-    //   this.userService.updateUser(row).subscribe(() => (row.isEdit = false));
-    // }
+    if (row._id === '') {
+      this.servicesService.addService(row).subscribe((newService: IService) => {
+        console.log(row);
+        row._id = newService._id;
+        row.isEdit = false;
+      });
+    } else {
+      this.servicesService.updateService(row).subscribe(() => (row.isEdit = false));
+    }
   }
 
-
-
-  removeRow(id: number) {
-    // this.userService.deleteUser(id).subscribe(() => {
-    //   this.dataSource.data = this.dataSource.data.filter(
-    //     (u: User) => u.id !== id
-    //   );
-    // });
+  deleteRow(id: number) {
+    this.servicesService.deleteService(id).subscribe(data => {
+      this.allTableData = data;
+    });
   }
 
   removeSelectedRows() {
