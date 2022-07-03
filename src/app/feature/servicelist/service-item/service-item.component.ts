@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IService, ServiceColumns } from 'src/app/core/interfaces/service';
@@ -10,12 +10,15 @@ import { IService, ServiceColumns } from 'src/app/core/interfaces/service';
   styleUrls: ['./service-item.component.css']
 })
 export class ServiceItemComponent implements OnInit {
-  
+
   @Input() category: string;
   @Input() tableData: IService[];
   @Input() editRow: any;
   @Input() removeRow: any;
   @Input() removeSelectedRows: any;
+
+  @Output() submitRowForEdit = new EventEmitter;
+  @Output() submitRowForDeletion = new EventEmitter;
 
   columnsSchema: any = ServiceColumns;
   displayedColumns: string[] = ServiceColumns.map(col => col.key);
@@ -26,13 +29,11 @@ export class ServiceItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.data = this.tableData.filter(item => item.category === this.category);
-    console.log(this.tableData);
   }
 
   ngOnChanges(changes: any) {
     if (changes.tableData) {
       this.dataSource.data = this.tableData.filter(item => item.category === this.category);
-      // console.log(this.dataSource.data);
     }
   };
 
@@ -46,6 +47,14 @@ export class ServiceItemComponent implements OnInit {
       isSelected: false,
     };
     this.dataSource.data = [newRow, ...this.dataSource.data];
+  }
+
+  onEditRow(row: IService) {
+    this.submitRowForEdit.emit(row);
+  };
+
+  onRemoveRow(id: number) {
+    this.submitRowForDeletion.emit(id);
   }
 
   inputHandler(e: any, _id: string, key: string) {

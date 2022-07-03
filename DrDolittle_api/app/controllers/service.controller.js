@@ -5,7 +5,7 @@ const Service = db.service;
 
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.category ||
+    if (!req.body.category ||
         !req.body.description ||
         !req.body.price) {
         res.status(400).send({ message: 'Всички полета са задължителни!' });
@@ -84,11 +84,7 @@ exports.delete = (req, res) => {
     Service
         .findByIdAndRemove(req.params.id)
         .then(data => {
-            const { _doc } = { ...data };
-            res.send({
-                message: 'Успешно изтрихте услугата.',
-                _doc
-            });
+            res.send(data);
         }).catch(err => {
             res.status(500).send({
                 message:

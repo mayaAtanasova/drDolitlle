@@ -23,11 +23,11 @@ export class ServicesService {
   }
 
   addService(service: IService): Observable<IService> {
-    return this.http.post<IService>(`${baseUrl}/add`, service);
+    return this.http.post<IService>(`${baseUrl}`, service);
   }
 
-  deleteService(id: number): Observable<IService> {
-    return this.http.delete<IService>(`${baseUrl}/${id}`);
+  deleteService(id: number): Observable<IService[]> {
+    return this.http.delete<IService[]>(`${baseUrl}/${id}`);
   }
 
   deleteServices(services: IService[]): Observable<IService[]> {

@@ -25,7 +25,7 @@
                         <button mat-button (click)="element.isEdit = !element.isEdit">
                             Промяна
                         </button>
-                        <button mat-button class="button-remove" (click)="removeRow(element.id)">
+                        <button mat-button class="button-remove" (click)="onRemoveRow(element._id)">
                             Изтриване
                         </button>
                     </div>
@@ -39,13 +39,13 @@
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
                     <div *ngSwitchCase="'isSelected'"></div>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                        <button mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)">
+                        <button mat-button (click)="onEditRow(element)" [disabled]="disableSubmit(element._id)">
                             Готово
                         </button>
                     </div>
                     <mat-form-field class="form-input" *ngSwitchDefault>
                         <input matInput [required]="col.required" [pattern]="col.pattern" [type]="col.type"
-                            [(ngModel)]="element[col.key]" (change)="inputHandler($event, element.id, col.key)" />
+                            [(ngModel)]="element[col.key]" (change)="inputHandler($event, element._id, col.key)" />
                     </mat-form-field>
                 </div>
             </td>
