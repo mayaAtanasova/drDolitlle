@@ -217,6 +217,10 @@ h2::after {
   color: var(--color-link-default);
 }
 
+.service-card .more:hover {
+  cursor: pointer;
+}
+
 .service-card span {
   display: inline-block;
   font-size: 1.5em;

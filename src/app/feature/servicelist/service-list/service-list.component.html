@@ -1,7 +1,7 @@
-<div class="services-wrapper">
+<div #servicesContainer class="services-wrapper">
     <h2>Ценоразпис на Ветеринарна клиника "Д-р Дулитъл"</h2>
 
-    <section id="clinic">
+    <section  #clinic id="clinic">
         <h3>Клиника</h3>
 
         <app-service-item category="manipulation" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
@@ -18,7 +18,7 @@
 
     </section>
 
-    <section id="diagnostics">
+    <section #diagnostics id="diagnostics">
         <h3>Диагностика</h3>
 
         <app-service-item category="exam" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
@@ -48,7 +48,7 @@
 
     </section>
 
-    <section id="documentation">
+    <section id="administration">
         <h3>Документация</h3>
 
         <app-service-item category="administration" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"

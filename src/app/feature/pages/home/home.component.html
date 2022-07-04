@@ -67,7 +67,7 @@
                     <h3>Клиника</h3>
                     <p>терапия, хирургия, анестезия, стационар с полагане на лекарски грижи, дерматология, кардиология, стоматология,
                         травматология, акушерство и гинекология, хомеотерапия</p>
-                    <p class="more">Още <span>&rarr;</span></p>
+                    <p class="more" [routerLink]="['/servicelist', {section: 'clinic'}]">Още <span>&rarr;</span></p>
                 </div>
 
                 <div class="service-card">
@@ -76,7 +76,7 @@
                     </div>
                     <h3>Диагностика</h3>
                     <p>прегледи, разчитане на уз, извършване и разчитане на лабораторни изследвания </p>
-                    <p class="more">Още <span>&rarr;</span></p>
+                    <p class="more" [routerLink]="['/servicelist', {section: 'diagnostics'}]">Още <span>&rarr;</span></p>
                 </div>
 
                 <div class="service-card">
@@ -85,7 +85,7 @@
                     </div>
                     <h3>Профилактика</h3>
                     <p>ваксинация и реваксинация, чипиране, обработка против паразити</p>
-                    <p class="more">Още <span>&rarr;</span></p>
+                    <p class="more" [routerLink]="['/servicelist', {section: 'prophylactic'}]">Още <span>&rarr;</span></p>
                 </div>
 
                 <div class="service-card">
@@ -94,7 +94,7 @@
                     </div>
                     <h3>Документи</h3>
                     <p>Здравна книжка, международен паспорт, чипиране и документи за чипиране</p>
-                    <p class="more">Още <span>&rarr;</span></p>
+                    <p class="more" [routerLink]="['/servicelist', {section: 'administration'}]">Още <span>&rarr;</span></p>
                 </div>
 
                 <div class="service-card">
