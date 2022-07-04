@@ -2,10 +2,10 @@
     <article class="table-header">
         <div>
             <h4>{{titles[category]}}</h4>
-            <button class="button-remove-rows" mat-button (click)="onRemoveSelectedRows()">
+            <button *ngIf="isAdmin" class="button-remove-rows" mat-button (click)="onRemoveSelectedRows()">
                 Изтрий избраните редове
             </button>
-            <button class="button-add-row" mat-button (click)="addRow($event)">
+            <button *ngIf="isAdmin" class="button-add-row" mat-button (click)="addRow($event)">
                 Добави ред
             </button>
         </div>
@@ -22,10 +22,10 @@
                         <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
                     </ng-container>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                        <button mat-button (click)="element.isEdit = !element.isEdit">
+                        <button *ngIf="isAdmin" mat-button (click)="element.isEdit = !element.isEdit">
                             Промяна
                         </button>
-                        <button mat-button class="button-remove" (click)="onRemoveRow(element._id)">
+                        <button *ngIf="isAdmin" mat-button class="button-remove" (click)="onRemoveRow(element._id)">
                             Изтриване
                         </button>
                     </div>
@@ -39,7 +39,7 @@
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
                     <div *ngSwitchCase="'isSelected'"></div>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                        <button mat-button (click)="onEditRow(element)" [disabled]="disableSubmit(element._id)">
+                        <button *ngIf="isAdmin" mat-button (click)="onEditRow(element)" [disabled]="disableSubmit(element._id)">
                             Готово
                         </button>
                     </div>

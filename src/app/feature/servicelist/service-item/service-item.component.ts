@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IService, ServiceColumns } from 'src/app/core/interfaces/service';
-
+import { IUser } from 'src/app/core/interfaces/user';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
   selector: 'app-service-item',
@@ -26,6 +27,10 @@ export class ServiceItemComponent implements OnInit {
   valid: any = {};
   dataSource = new MatTableDataSource<IService>();
 
+  currentUser: IUser;
+  isAdmin = false;
+  isLoggedIn = this.tokenService.isLoggedIn$;
+
 
   titles: { [key: string] : string } = {
     manipulation: 'Манипулации',
@@ -39,13 +44,25 @@ export class ServiceItemComponent implements OnInit {
     administration: 'Администрация',
   };
 
-  constructor() { }
+  constructor(
+    private tokenService: TokenStorageService
+  ) { }
 
   ngOnInit(): void {
     this.dataSource.data = this.tableData.filter(item => item.category === this.category);
   }
 
   ngOnChanges(changes: any) {
+    this.tokenService.currentUser$.subscribe(user => {
+      if(user) {
+      this.isAdmin = user.roles.includes('ROLE_ADMIN');
+      }
+    });
+
+    if (!this.isAdmin) {
+      this.displayedColumns.pop();
+    }
+
     if (changes.tableData) {
       this.dataSource.data = this.tableData.filter(item => item.category === this.category);
     }

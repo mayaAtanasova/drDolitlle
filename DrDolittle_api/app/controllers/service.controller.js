@@ -6,10 +6,8 @@ const Service = db.service;
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.category ||
-        !req.body.description ||
-        !req.body.price) {
-        res.status(400).send({ message: 'Всички полета са задължителни!' });
-        return;
+        !req.body.description ) {
+        res.status(400).send({ message: "Категорията и описанието са задължителни" });
     }
     // Create the Service
     const service = new Service({
