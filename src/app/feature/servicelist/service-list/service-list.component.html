@@ -1,14 +1,63 @@
 <div class="services-wrapper">
-<h2>Ценоразпис на Ветеринарна клиника "Д-р Дулитъл"</h2>
+    <h2>Ценоразпис на Ветеринарна клиника "Д-р Дулитъл"</h2>
 
-<h3>Операции и манипулации</h3>
+    <section id="clinic">
+        <h3>Клиника</h3>
 
-<app-service-item 
-title="Манипулации"
-category="manipulation"
-[tableData]="allTableData"
-(submitRowForEdit)="editRow($event)"
-(submitRowForDeletion)="deleteRow($event)"
-></app-service-item>
+        <app-service-item category="manipulation" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="surgery" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="hospis" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+    </section>
+
+    <section id="diagnostics">
+        <h3>Диагностика</h3>
+
+        <app-service-item category="exam" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="lab" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+    </section>
+
+    <section id="prophylactic">
+        <h3>Профилактика</h3>
+
+        <app-service-item category="deworm" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="vaccine" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="groom" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+    </section>
+
+    <section id="documentation">
+        <h3>Документация</h3>
+
+        <app-service-item category="administration" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+
+    </section>
+
+    <confirm-dialog *ngIf="showDialog" (dialogResolution)="handleDialog($event)"></confirm-dialog>
 
 </div>

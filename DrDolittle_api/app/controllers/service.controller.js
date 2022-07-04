@@ -73,15 +73,33 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    console.log(req.params.id)
     Service
         .findByIdAndRemove(req.params.id)
         .then(data => {
             res.send(data);
-        }).catch(err => {
+        })
+        .catch(err => {
             res.status(500).send({
                 message:
                     err.message || 'Грешка при изтриването на услугата'
+            });
+        }
+        );
+}
+
+exports.deleteMany = (req, res) => {
+    const ids = req.body;
+
+    Service
+        .deleteMany({ _id: { $in: ids } })
+        .then(data => {
+            console.log(data);
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || 'Грешка при изтриването на услугите'
             });
         }
         );

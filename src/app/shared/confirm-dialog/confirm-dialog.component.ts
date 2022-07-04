@@ -7,7 +7,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ConfirmDialogComponent implements OnInit {
 
-  @Input() message: string;
 
   @Output() dialogResolution: EventEmitter<any> = new EventEmitter;
 

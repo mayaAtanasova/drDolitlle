@@ -30,12 +30,8 @@ export class ServicesService {
     return this.http.delete<IService>(`${baseUrl}/${id}`);
   }
 
-  deleteServices(services: IService[]): Observable<IService[]> {
-    return forkJoin(
-      services.map((service) =>
-        this.http.delete<IService>(`${baseUrl}/${service._id}`)
-      )
-    );
+  deleteServices(serviceIds: string[]): any {
+    return this.http.post(`${baseUrl}/delete`, serviceIds);
   }
 
 }

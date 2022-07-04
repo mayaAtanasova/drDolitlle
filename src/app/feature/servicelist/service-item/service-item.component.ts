@@ -19,6 +19,7 @@ export class ServiceItemComponent implements OnInit {
 
   @Output() submitRowForEdit = new EventEmitter;
   @Output() submitRowForDeletion = new EventEmitter;
+  @Output() submitRowsForDeletion = new EventEmitter;
 
   columnsSchema: any = ServiceColumns;
   displayedColumns: string[] = ServiceColumns.map(col => col.key);
@@ -69,6 +70,12 @@ export class ServiceItemComponent implements OnInit {
   onRemoveRow(id: string) {
     this.submitRowForDeletion.emit(id);
   }
+
+  onRemoveSelectedRows() {
+    const selectedRows = this.dataSource.data.filter(services => services.isSelected)
+    this.submitRowsForDeletion.emit(selectedRows);
+  }
+
 
   inputHandler(e: any, _id: string, key: string) {
     if (!this.valid[_id]) {

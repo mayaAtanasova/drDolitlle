@@ -13,6 +13,10 @@ import { ServiceItemComponent } from '../service-item/service-item.component';
 export class ServiceListComponent implements OnInit {
 
   allTableData: IService[] = [];
+  showDialog = false;
+
+  selectedRowIds: string[] = [];
+
 
   constructor(public dialog: MatDialog, private servicesService: ServicesService) { }
 
@@ -21,6 +25,7 @@ export class ServiceListComponent implements OnInit {
       this.allTableData = data;
     }
     );
+
   }
 
   editRow(row: IService) {
@@ -36,27 +41,28 @@ export class ServiceListComponent implements OnInit {
   }
 
   deleteRow(id: string) {
-    console.log('data id to delete' + id)
     this.servicesService.deleteService(id).subscribe(data => {
       this.allTableData = this.allTableData.filter(item => item._id !== data._id);
     });
   }
 
-  removeSelectedRows() {
-    // const users = this.dataSource.data.filter((u: User) => u.isSelected);
-    // this.dialog
-    //   .open(ConfirmDialogComponent)
-    //   .afterClosed()
-    //   .subscribe((confirm) => {
-    //     if (confirm) {
-    //       this.userService.deleteUsers(users).subscribe(() => {
-    //         this.dataSource.data = this.dataSource.data.filter(
-    //           (u: User) => !u.isSelected
-    //         );
-    //       });
-    //     }
-    // });
+  removeSelectedRows(rows: IService[]) { 
+    this.selectedRowIds = rows.map(item => item._id);
+    this.showDialog = true;
   }
 
+  handleDialog(resolution: string){
+    if(resolution === 'yes'){
+      this.showDialog = false;
+      
+      this.servicesService
+      .deleteServices(this.selectedRowIds)
+      .subscribe((data: any)  => {
+        this.allTableData = this.allTableData.filter(service => !this.selectedRowIds.includes(service._id));
+      });
 
+    } else if(resolution === 'cancel'){
+      this.showDialog = false;
+    }
+    }
 }

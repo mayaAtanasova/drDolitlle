@@ -15,5 +15,8 @@ module.exports = app => {
     // Delete a Service by id
     router.delete('/:id', verifyToken, isAdmin, services.delete);
 
+    //delete several services
+    router.post('/delete', verifyToken, isAdmin, services.deleteMany);
+
     app.use('/servicelist', router);
 };
