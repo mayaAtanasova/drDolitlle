@@ -1,34 +1,61 @@
 <header class="site-header">
 
-    <div class="logo-container">
-        <a routerLink="/">
-            <img src="/assets/drdl_logo_one_row_wb.png" alt="DrDolittle">
-        </a>
+    <div class="header-top">
+
+        <div class="logo-container">
+            <a routerLink="/">
+                <img src="/assets/drdl_logo_one_row_wb.png" alt="DrDolittle">
+            </a>
+        </div>
+
+        <nav class="site-nav">
+            <div class="common">
+                <ul>
+                    <li><a (click)="onClick('about')">За нас</a></li>
+                    <li><a (click)="onClick('services')">Услуги</a></li>
+                    <li><a (click)="onClick('ads')">Обяви</a></li>
+                    <li><a (click)="onClick('contacts')">Контакти</a></li>
+                </ul>
+            </div>
+
+        </nav>
+
+        <div class="contact">
+            <div class="conditional">
+                <ul>
+                    <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="user/login">Вход</a></li>
+                    <li *ngIf="(isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="logoutHandler()">Изход</a>
+                    </li>
+                    <span>
+                        <fa-icon [icon]="faPhone"></fa-icon>
+                        0878 951 602
+                    </span>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
-    <nav class="site-nav">
-        <div class="common">
-            <ul>
-                <li><a (click)="onClick('about')">За нас</a></li>
-                <li><a (click)="onClick('services')">Услуги</a></li>
-                <li><a (click)="onClick('ads')">Обяви</a></li>
-                <li><a (click)="onClick('contacts')">Контакти</a></li>
-            </ul>
+    <div class="hero" id="home">
+        <img src="/assets/home_bkg1.png" alt="">
+        <div class="home-contents">
+
+            <div class="text">
+                <h1>
+                    Ние разбираме
+                </h1>
+                <h1> <span>вашите</span> любимци </h1>
+                <h3>
+                    Независимо от цвета, вида, размера и характера!
+                </h3>
+            </div>
+
         </div>
 
-    </nav>
-
-    <div class="contact">
-        <div class="conditional">
-            <ul>
-                <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="user/login">Вход</a></li>
-                <li *ngIf="(isLoggedIn$ | async)"><a href="javascript:void(0)" (click)="logoutHandler()">Изход</a></li>
-                <span>
-                    <fa-icon [icon]="faPhone"></fa-icon>
-                    0878 951 602
-                </span>
-            </ul>
+        <div class="shape-divider">
+            <img src="assets/curveNegative.svg" alt="">
         </div>
+
     </div>
 
 </header>

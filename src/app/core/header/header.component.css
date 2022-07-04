@@ -1,6 +1,27 @@
-.site-header {
+header {
+  position: relative;
+  background-color: #000509;
+  z-index: 0;
+}
+
+header::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,1) 4%, rgba(175,175,175,0.3) 100%);
+opacity: 0.5;
+z-index: 0;
+}
+
+.header-top {
+  position:relative;
+  z-index: 1;
+  width: 100%;
   margin-bottom: 0;
-  background-color: rgb(2, 2, 27);
   padding: 1em;
   display: flex;
   justify-content: space-between;
@@ -8,11 +29,11 @@
 }
 
 .logo-container {
-  width: 10em;
+  width: 10rem;
 }
 
 .logo-container > a > img {
-  width: 10em;
+  width: 10rem;
   height: auto;
   cursor: pointer;
 }
@@ -75,3 +96,60 @@ li:hover::after {
   transform: scaleX(1);
 }
 
+/* --------hero----------- */
+
+
+#home>img {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.home-contents {
+  position: relative;
+  height: 800px;
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.text {
+  font-style: italic;
+  color: white;
+  padding: 1.5rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+}
+
+.text h1:first-child {
+  padding-top: 1rem;
+}
+
+.text span {
+  color: var(--color-link-default);
+  display: inline;
+  font-size: 4rem;
+  padding-left: 2rem;
+}
+
+.text h3 {
+  padding: 1.5rem;
+  width: 30%;
+}
+
+.shape-divider {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  line-height: 0;
+  z-index: 10;
+}
+
+.shape-divider img {
+  width: 100%;
+  height: auto;
+}
