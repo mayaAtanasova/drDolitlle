@@ -60,7 +60,7 @@ export class ServiceItemComponent implements OnInit {
     });
 
     if (!this.isAdmin) {
-      this.displayedColumns.pop();
+      this.displayedColumns = this.displayedColumns.filter(columnKey => columnKey != 'isEdit');
     }
 
     if (changes.tableData) {
