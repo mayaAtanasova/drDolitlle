@@ -17,4 +17,7 @@ export class AdminPageComponent implements OnInit {
     this.router.navigate(['/adlist']);
   }
 
+  gotoServices(){
+    this.router.navigate(['/servicelist']);
+  }
 }
