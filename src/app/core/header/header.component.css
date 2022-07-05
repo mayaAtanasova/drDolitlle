@@ -3,6 +3,10 @@ header {
   z-index: 0;
 }
 
+.menu-compact {
+  display: none;
+}
+
 .header-other {
   background-color: #00182f;
 }
@@ -86,6 +90,21 @@ li:hover::after {
   transform: scaleX(1);
 }
 
-/* --------hero----------- */
+@media (max-width: 600px) {
+  .header-top {
+    display: none;
+  }
+
+  .menu-compact {
+    display: block;
+  }
+
+  .menu-compact img {
+    width: 25px;
+    height: auto;
+    margin: 1.5rem;
+    color: white;
+  }
+}
 
 

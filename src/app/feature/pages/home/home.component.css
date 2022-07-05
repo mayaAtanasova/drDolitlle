@@ -77,6 +77,10 @@ h2::after {
   width: 30%;
 }
 
+.secret-tel {
+  display: none;
+}
+
 /*About*/
 .about-contents {
   position: relative;
@@ -328,21 +332,19 @@ ad-item {
 }
 
 .back a {
-  display: block;
   width: 100%;
   height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back p {
   color: white;
   font-weight: 700;
   font-size: 2em;
-  position: absolute;
-  top: 5%;
-  left: 35%;
-  margin: 0;
-  padding: 0;
-  z-index: 3;
+  transform: translateY(20%);
 }
 
 /* Responsive */
@@ -472,7 +474,6 @@ ad-item {
   .ad-title {
     padding-bottom: 0.5rem;
   }
-
 }
 
 @media (max-width: 900px) {
@@ -496,7 +497,7 @@ ad-item {
 
   .service-cards {
     flex-direction: column;
-    flex-wrap: wrap
+    flex-wrap: wrap;
   }
 
   .service-card {
@@ -518,7 +519,7 @@ ad-item {
     margin-bottom: 0.25rem;
   }
 
-  .service-card h3{
+  .service-card h3 {
     font-size: 1rem;
   }
 
@@ -540,37 +541,75 @@ ad-item {
     margin: 0 0.5rem;
     width: 100%;
   }
-
-
 }
 
 @media (max-width: 600px) {
+  /* -----HOME---- */
   #home {
-    background-size: 100%;
+    margin-bottom: 20vh;
   }
 
-  .text {
-    text-align: center;
+  .hero-img-container {
+    overflow: hidden;
   }
 
-  .text h3 {
-    width: 90%;
+  .home-contents {
+    margin-top: 20vh;
   }
 
-  #home h1:first-of-type {
-    margin-top: 250px;
+  .secret-tel{
+    display: block;
+    margin-top: 12rem;
   }
+
+  /* ------ABOUT------ */
+  #about {
+    margin-top: 30vh;
+  }
+
   .about-details {
-    flex-direction: column;
+    padding: 0.5rem;
   }
 
-  .shape-divider {
-    bottom: -9.5%;
+  .about-details .about-image-container {
+    width: 150px;
+    height: 150px;
+
+    box-shadow: inset 0 0 0 10px white;
+  }
+  .about-details .about-image-container img {
+    width: 160px;
+    height: 160px;
+    flex: 0 0 150px;
   }
 
-  #services {
-    height: 100%;
+  #about::after {
+    right: -30%;
+  }
+  /* -----SERVICES----- */
+
+  .service-card {
+    padding-right: 0.1rem;
   }
 
+  .service-card-header {
+    width: 70%;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
 
+  .service-card-main {
+    width: 20%;
+    padding: 0;
+  }
+
+  .service-card-main p:first-child {
+    display: none;
+  }
+
+  /* ----- ADS----- */
+
+  ad-item {
+    width: 100%;
+  }
 }

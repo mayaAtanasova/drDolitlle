@@ -38,6 +38,7 @@ registerLocaleData(localeBg, 'bg')
     SharedModule,
     FormsModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'bg' }
