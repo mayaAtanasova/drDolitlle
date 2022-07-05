@@ -1,9 +1,9 @@
-<header class="site-header">
+<header [ngClass]="classBackground" class="site-header">
 
     <div class="header-top">
 
         <div class="logo-container">
-            <a routerLink="/">
+            <a routerLink="/home">
                 <img src="/assets/drdl_logo_one_row_wb.png" alt="DrDolittle">
             </a>
         </div>
@@ -36,26 +36,5 @@
 
     </div>
 
-    <div class="hero" id="home">
-        <img src="/assets/home_bkg1.png" alt="">
-        <div class="home-contents">
-
-            <div class="text">
-                <h1>
-                    Ние разбираме
-                </h1>
-                <h1> <span>вашите</span> любимци </h1>
-                <h3>
-                    Независимо от цвета, вида, размера и характера!
-                </h3>
-            </div>
-
-        </div>
-
-        <div class="shape-divider">
-            <img src="assets/curveNegative.svg" alt="">
-        </div>
-
-    </div>
 
 </header>

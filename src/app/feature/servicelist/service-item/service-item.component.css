@@ -90,6 +90,10 @@ table {
     padding: 0.5rem;
 }
 
+.mat-cell {
+  font-size: 1.1rem;
+}
+
 .mat-form-field {
   width: 100%;
 }

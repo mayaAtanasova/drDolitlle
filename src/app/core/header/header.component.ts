@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from '../services/token-storage.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
 
   faPhone = faPhone;
   isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
+  subscriptionRoute: Subscription;
+  classBackground: string = '';
+
 
   constructor(
     private router: Router,
@@ -32,7 +35,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(!!this.isLoggedIn$);
+    this.subscriptionRoute = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/' || event.url.includes('home')){
+          this.classBackground = '' ;
+        } else {
+          this.classBackground = 'header-other';
+        }
+      }
+    });
   }
 
 }

@@ -83,3 +83,12 @@
   span {
     margin: 0 0.5em 0 0;
   }
+
+  @media (max-width: 900px) {
+    
+  /* -----FOOTER---- */
+
+  .contacts * {
+    padding: 0;
+  } 
+  }

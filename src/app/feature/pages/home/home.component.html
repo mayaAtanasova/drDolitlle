@@ -1,5 +1,26 @@
 <main class="site-main">
 
+
+    <div class="hero" id="home">
+        <div class="hero-img-container">
+            <img src="/assets/home_bkg1.png" alt="">
+        </div>
+        <div class="home-contents">
+
+            <div class="text">
+                <h1>
+                    Ние разбираме
+                </h1>
+                <h1> <span>вашите</span> любимци </h1>
+                <h3>
+                    Независимо от цвета, вида, размера и характера!
+                </h3>
+            </div>
+
+        </div>
+
+    </div>
+
     <div id="about">
         <div class="about-contents">
 
@@ -11,15 +32,15 @@
 
                 <div class="about-text">
                     <h2>За нас</h2>
-                    <h3>Ветеринарна клиника с отношение</h3>
-                    <p>Във ветеринарна клиника "Д-р Дулитъл" ще срещнете разбиране. Нашата мисия е да осигурим
-                        най-висок стандарт в обслужването на вашите лщбимци на разумна цена. Ние ще работим
+                    <h3>Ветеринарна услуга с отношение</h3>
+                    <p>Във ветеринарна амбулатория "Д-р Дулитъл" ще срещнете разбиране. Нашата мисия е да осигурим
+                        най-висок стандарт в обслужването на вашите любимци на разумна цена. Ние ще работим
                         заедно с вас, за да разберем уникалните здравни нужди на вашия любим приятел, и ще ви
                         помогнем да бъдете отговорни и грижовни към тези специални членове на семейството ви.
                     </p>
                     <p>
                         В нашата клника ще намерите гостоприемна и приятелска среда за вас и вашите любимци, за
-                        да бъде посещението ви възможно най-приятно. Вие и вашите лщбимци сте част от нашето
+                        да бъде посещението ви възможно най-приятно. Вие и вашите любимци сте част от нашето
                         семейство.
                     </p>
                 </div>
@@ -40,50 +61,76 @@
             <div class="service-cards">
 
                 <div class="service-card">
-                    <div class="service-img-container">
-                        <img class="clinic" src="/assets/clinic.svg" alt="clinig_img">
+                    <div class="service-card-header">
+                        <div class="service-img-container">
+                            <img class="clinic" src="/assets/clinic.svg" alt="clinig_img">
+                        </div>
+                        <h3>Клиника</h3>
                     </div>
-                    <h3>Клиника</h3>
-                    <p>терапия, хирургия, анестезия, стационар с полагане на лекарски грижи, дерматология, кардиология, стоматология,
-                        травматология, акушерство и гинекология, хомеотерапия</p>
-                    <p class="more" [routerLink]="['/servicelist', {section: 'clinic'}]">Още <span>&rarr;</span></p>
+                    <div class="service-card-main">
+                        <p>терапия, хирургия, анестезия, стационар с полагане на лекарски грижи, дерматология,
+                            стоматология, травматология, АГ, хомеопатия</p>
+                        <p class="more" [routerLink]="['/servicelist', {section: 'clinic'}]">Още <span>&rarr;</span></p>
+                    </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-img-container">
-                        <img class="clinic" src="/assets/diagnostics.svg" alt="diagnostics_img">
+                    <div class="service-card-header">
+                        <div class="service-img-container">
+                            <img class="clinic" src="/assets/diagnostics.svg" alt="diagnostics_img">
+                        </div>
+                        <h3>Диагностика</h3>
                     </div>
-                    <h3>Диагностика</h3>
-                    <p>прегледи, разчитане на уз, извършване и разчитане на лабораторни изследвания </p>
-                    <p class="more" [routerLink]="['/servicelist', {section: 'diagnostics'}]">Още <span>&rarr;</span></p>
+                    <div class="service-card-main">
+                        <p>прегледи, разчитане на уз, извършване и разчитане на лабораторни изследвания </p>
+                        <p class="more" [routerLink]="['/servicelist', {section: 'diagnostics'}]">Още
+                            <span>&rarr;</span>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-img-container">
-                        <img class="vaccination" src="/assets/vaccine.svg" alt="vaccine_img">
+                    <div class="service-card-header">
+                        <div class="service-img-container">
+                            <img class="vaccination" src="/assets/vaccine.svg" alt="vaccine_img">
+                        </div>
+                        <h3>Профилактика</h3>
                     </div>
-                    <h3>Профилактика</h3>
-                    <p>ваксинация и реваксинация, чипиране, обработка против паразити</p>
-                    <p class="more" [routerLink]="['/servicelist', {section: 'prophylactic'}]">Още <span>&rarr;</span></p>
+                    <div class="service-card-main">
+                        <p>ваксинация и реваксинация, чипиране, обработка против паразити</p>
+                        <p class="more" [routerLink]="['/servicelist', {section: 'prophylactic'}]">Още
+                            <span>&rarr;</span>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-img-container">
-                        <img class="stacio" src="/assets/stacio.svg" alt="stacio_img">
+                    <div class="service-card-header">
+                        <div class="service-img-container">
+                            <img class="stacio" src="/assets/stacio.svg" alt="stacio_img">
+                        </div>
+                        <h3>Документи</h3>
                     </div>
-                    <h3>Документи</h3>
-                    <p>Здравна книжка, международен паспорт, чипиране и документи за чипиране</p>
-                    <p class="more" [routerLink]="['/servicelist', {section: 'administration'}]">Още <span>&rarr;</span></p>
+                    <div class="service-card-main">
+                        <p>Здравна книжка, международен паспорт, чипиране и документи за чипиране</p>
+                        <p class="more" [routerLink]="['/servicelist', {section: 'administration'}]">Още
+                            <span>&rarr;</span>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-img-container">
-                        <img class="petshop" src="/assets/petshop.svg" alt="petshop_img">
+                    <div class="service-card-header">
+                        <div class="service-img-container">
+                            <img class="petshop" src="/assets/petshop.svg" alt="petshop_img">
+                        </div>
+                        <h3>Зоомагазин</h3>
                     </div>
-                    <h3>Зоомагазин</h3>
-                    <p>ветеринарна аптека с всички необходими за лечението препарати; храна и аксесоари за вашия
-                        любимец</p>
-                    <p class="more">Още <span>&rarr;</span></p>
+                    <div class="service-card-main">
+                        <p>ветеринарна аптека с всички необходими за лечението препарати; храна и аксесоари за вашия
+                            любимец</p>
+                        <p class="more">Още <span>&rarr;</span></p>
+                    </div>
                 </div>
 
             </div>
@@ -100,7 +147,7 @@
                 <h2>Обяви от наши клиенти</h2>
             </div>
 
-            <div *ngIf="adList" class="ad-cards" >
+            <div *ngIf="adList" class="ad-cards">
                 <ad-item *ngFor="let ad of adList" [ad]="ad"></ad-item>
                 <div class="noads" *ngIf="adList && adList.length === 0">
                     <h3>В момента няма обяви. Натиснете "Създаване", за да създадете нова!</h3>
@@ -113,19 +160,19 @@
         <div class="btn-holder">
             <a *ngIf="adList && adList.length > 0" routerLink="/adlist">
                 <button class="ad-link">
-                <p>Виж всички</p>
-            </button>
+                    <p>Виж всички</p>
+                </button>
             </a>
-            <a routerLink="/adlist/new">>
-            <button class="ad-link">
-                <p>Създай нова обява</p>
-            </button></a>
+            <a routerLink="/adlist/new">
+                <button class="ad-link">
+                    <p>Създай нова обява</p>
+                </button>
+            </a>
         </div>
 
     </div>
 
     <div class="back">
-        <!-- <fa-icon [icon]="faPhone"></fa-icon> -->
         <a routerLink="/">
             <p>&#8593;</p>
         </a>

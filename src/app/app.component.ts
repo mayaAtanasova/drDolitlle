@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ветеринарна клиника "Д-р Дулитъл';
+  title = 'Ветеринарна амбулатория "Д-р Дулитъл';
 }
