@@ -1,5 +1,5 @@
 .registration-form-container {
-    width: 400px;
+    max-width: 350px;
     margin: 0 auto;
   display: flex;
   align-items: center;
@@ -32,6 +32,10 @@ h2::after {
   border: none;
   border-radius: 0.4em;
   box-shadow: 3px 5px 9px -4px rgb(7, 0, 77);
+}
+
+.registration-form form{
+  max-width: 350px;
 }
 
 .registration-form label{
@@ -84,4 +88,10 @@ display: inline-block;
 .input-error {
   border: 1px solid;
   border-color: var(--color-link-default);
+}
+
+@media (max-width: 600px) {
+.registration-form-container {
+  padding: 2rem;
+}
 }

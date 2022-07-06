@@ -100,6 +100,10 @@ li:hover::after {
     position: relative;
   }
 
+  .menu-compact img:hover {
+    cursor: pointer;
+  }
+
   .menu-compact img {
     width: 25px;
     height: auto;
@@ -108,12 +112,21 @@ li:hover::after {
   }
 }
 
+.drawer {
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.show-drawer {
+  transform: translateX(0);
+}
+
 .drawer ul {
   position: absolute;
-  top:0;
-  left: 0;
+  top:-5rem;
+  left: rem;
   width: 100%;
-  height: 20rem;
+  height: 30rem;
   background-color: rgba(0, 24, 47, 0.9);
   z-index: 1;
   
@@ -122,7 +135,7 @@ li:hover::after {
 }
 
 .drawer ul li {
-  width: 95%;
+  width: 25%;
   border-bottom: 1px solid gray;
   font-size: 1.2rem;
   text-align: center;

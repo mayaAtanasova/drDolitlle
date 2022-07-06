@@ -46,14 +46,12 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form.value;
     this.authService.login(email, password).subscribe({
       next: data => {
-        console.log(data);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isSuccessful = true;
         this.isSubmitted = true;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser()!.roles;
-        console.log(this.roles);
         if(this.roles.includes('ROLE_ADMIN')){
           this.router.navigate(['/admin']);
         } else if (this.roles.includes('ROLE_MODERATOR')){

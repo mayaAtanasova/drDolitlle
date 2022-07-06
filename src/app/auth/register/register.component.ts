@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
     const { email, password } = this.form.value;
     this.authService.register(email, password).subscribe({
       next: data => {
-        console.log(data);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isSuccessful = true;

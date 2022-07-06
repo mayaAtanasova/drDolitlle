@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from '../services/token-storage.service';
@@ -10,6 +10,8 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  @ViewChild('drawer') drawer: ElementRef;
 
   faPhone = faPhone;
   isLoggedIn$: Observable<boolean> = this.tokenStorageService.isLoggedIn$;
@@ -29,7 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logoutHandler(): void {
-    console.log('logging out')
+    this.closeMenu();
     this.tokenStorageService.logout();
     this.router.navigate(['/home']);
   }
@@ -44,6 +46,19 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
+  }
+
+  onDrawerIconClick() {
+    this.drawer.nativeElement.className = 'drawer show-drawer';
+  }
+
+  closeMenu() {
+    this.drawer.nativeElement.className = 'drawer';
+  }
+
+  onClickMob(elementId: string) {
+    this.closeMenu();
+    this.router.navigate(['/home'], { fragment: elementId });
   }
 
 }

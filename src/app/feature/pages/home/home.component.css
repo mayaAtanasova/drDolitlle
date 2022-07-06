@@ -555,6 +555,8 @@ ad-item {
 
   .home-contents {
     margin-top: 20vh;
+    position: relative;
+    z-index: -1;
   }
 
   .secret-tel{
