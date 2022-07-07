@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 
 h2 {
   font-weight: 900;
@@ -20,12 +17,17 @@ h2::after {
   left: 0;
 }
 
+.site-main {
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ----- hero ---- */
 
 #home {
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 90vh;
 }
 
@@ -320,7 +322,7 @@ ad-item {
   height: 70px;
   border-radius: 50%;
   background-color: #07004d;
-  opacity: 0.5;
+  opacity: 0.25;
   position: fixed;
   bottom: 2rem;
   right: 2rem;

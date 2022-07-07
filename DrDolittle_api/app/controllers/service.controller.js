@@ -32,6 +32,8 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
 
+    console.group('inside find all')
+
     Service
         .find({})
         .then(data => {
