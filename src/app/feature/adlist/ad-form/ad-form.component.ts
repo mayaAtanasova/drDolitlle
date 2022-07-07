@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgxImageCompressService } from 'ngx-image-compress';
 import { IAd } from 'src/app/core/interfaces/ad';
 import { IUser } from 'src/app/core/interfaces/user';
 import PhoneValidation from '../ad-new/phone-validation';
 import { requiredFileType } from '../ad-new/required-file-type';
+import { CompressImageService } from 'src/app/core/services/compress.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ad-form',
@@ -24,7 +27,10 @@ export class AdFormComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private compressImage: CompressImageService,
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -51,12 +57,20 @@ export class AdFormComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList!.length > 0) {
       const file = fileList![0];
-      this.file = file;
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.localImgUrl = reader.result;
-      }
+
+      this.compressImage.compress(file)
+        .pipe(take(1))
+        .subscribe(compressedImage => {
+          console.log(`Image size after compression ${compressedImage.size} bytes.`);
+          this.file = compressedImage;
+        });
+      // const file = fileList![0];
+      // this.file = file;
+      // const reader = new FileReader();
+      // reader.readAsDataURL(file);
+      // reader.onload = (_event) => {
+      //   this.localImgUrl = reader.result;
+      // }
     }
   }
 
@@ -75,7 +89,7 @@ export class AdFormComponent implements OnInit {
     this.dataCollected.emit(formData);
   }
 
-  removeImage(event:any) {
+  removeImage(event: any) {
     event.preventDefault();
     this.file = null;
     this.localImgUrl = '';

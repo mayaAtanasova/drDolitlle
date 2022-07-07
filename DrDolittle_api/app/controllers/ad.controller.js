@@ -28,6 +28,7 @@ exports.create = (req, res) => {
         contactName: req.body.contactName,
         owner: req.body.owner,
     });
+
     if (req.file && req.file.originalname) {
         ad.adImage = 'app/uploads/' + req.file.originalname;
     }
