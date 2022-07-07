@@ -35,3 +35,20 @@ h3 {
 .more:hover {
   cursor: pointer;
 }
+
+@media (max-width: 800px) {
+  .services-wrapper {
+    width: 100vw;
+  }
+
+  .services-wrapper section {
+    margin-bottom: 0;
+  }
+
+  .services-wrapper section h3 {
+    border-radius: 0;
+    padding-top: 2rem;
+    color: white;
+  }
+
+}

@@ -1,4 +1,7 @@
 .ads-dashboard {
+  position: relative;
+  z-index: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +66,7 @@
 }
 
 .add-new button:hover {
-  cursor:pointer;
+  cursor: pointer;
   background-color: rgb(41, 41, 92);
 }
 
@@ -73,7 +76,7 @@
   padding: 0 2em;
 }
 
-button+button {
+button + button {
   margin-left: 2em;
 }
 
@@ -81,23 +84,14 @@ button+button {
 
 .ad-list h1 {
   display: block;
-  max-width: 800px;
+  width: 80%;
   margin: 0 auto;
-  position: relative;
   text-align: center;
-}
-
-.ad-list h1::after {
-  position: absolute;
-  content: "";
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 0.15em;
-  background-color: var(--color-link-default);
+  border-bottom: 0.15em solid var(--color-link-default);
 }
 
 .ad-list-items {
+  margin: 0 auto;
   width: 80vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -140,4 +134,38 @@ button+button {
 
 .highlighted {
   background: var(--color-link-default);
+}
+
+@media (max-width: 600px) {
+  .search-group {
+    flex-direction: column-reverse;
+    font-size: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .search-group button {
+    padding: 0 3.2rem;
+  }
+
+  .add-new {
+    position: relative;
+    z-index: -10;
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .add-new button {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+  
+  .add-new button a,
+  .add-new button p {
+    font-size: 1.5rem;
+  }
+
+  ad-item {
+    max-width: 320px;
+  }
 }

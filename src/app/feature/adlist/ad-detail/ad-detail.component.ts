@@ -62,14 +62,12 @@ export class AdDetailComponent implements OnInit {
 
   handleDialog(resolution: string){
     if(resolution === 'yes'){
-      console.log(this.currentAd._id);
       this.showDialog = false;
       this.adService.deleteAd(this.currentAd._id)
       .subscribe({
         next: () => this.router.navigate(['/adlist'])
       })
     } else if(resolution === 'cancel'){
-      console.log('cancelled deletion');
       this.showDialog = false;
     }
     }

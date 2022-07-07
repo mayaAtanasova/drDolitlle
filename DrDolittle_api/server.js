@@ -60,8 +60,8 @@ function initial() {
             new Role({
                 name: 'user'
             }).save(err => {
-                if (err) {
-                    console.log('error', err);
+                if (err) { 
+                    console.error('error', err);
                 }
                 console.log('added \'user\' to roles collection');
             });
@@ -69,7 +69,7 @@ function initial() {
                 name: 'moderator'
             }).save(err => {
                 if (err) {
-                    console.log('error', err);
+                    console.error('error', err);
                 }
                 console.log('added \'moderator\' to roles collection');
             });
@@ -77,7 +77,7 @@ function initial() {
                 name: 'admin'
             }).save(err => {
                 if (err) {
-                    console.log('error', err);
+                    console.error('error', err);
                 }
                 console.log('added \'admin\' to roles collection');
             });

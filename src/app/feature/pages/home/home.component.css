@@ -615,3 +615,9 @@ ad-item {
     width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+  #ads {
+    margin-bottom: 2rem;
+  }
+}

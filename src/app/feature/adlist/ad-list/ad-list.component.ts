@@ -87,7 +87,7 @@ export class AdListComponent implements OnInit {
           this.totPages = Array.from(Array(totalPages).keys());
         },
         error: (err) => {
-          console.log(err);
+          console.error(err);
         }
       });
   }
@@ -112,7 +112,6 @@ export class AdListComponent implements OnInit {
     this.adService.deleteAll()
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.retrievePaginatedAds();
         },
         error: (e) => console.error(e)
@@ -120,7 +119,6 @@ export class AdListComponent implements OnInit {
   }
 
   searchCategory(): void {
-    console.log(this.category);
     this.page = 1;
     this.retrievePaginatedAds();
   }

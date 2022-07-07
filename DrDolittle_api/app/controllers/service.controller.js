@@ -6,8 +6,9 @@ const Service = db.service;
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.category ||
-        !req.body.description ) {
-        res.status(400).send({ message: "Категорията и описанието са задължителни" });
+        !req.body.description ||
+        (!req.body.description && !req.body.price)) {
+        return res.status(400).send({ message: "Категорията и описанието са задължителни" });
     }
     // Create the Service
     const service = new Service({
@@ -91,7 +92,6 @@ exports.deleteMany = (req, res) => {
     Service
         .deleteMany({ _id: { $in: ids } })
         .then(data => {
-            console.log(data);
             res.send(data);
         })
         .catch(err => {

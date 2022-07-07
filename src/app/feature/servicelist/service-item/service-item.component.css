@@ -1,20 +1,19 @@
 .service-section {
-    background-color: rgb(220, 235, 243);
-    padding: 2rem;
+  background-color: rgb(220, 235, 243);
+  padding: 2rem;
 }
 
 /* ----Table----- */
 
-
 h4 {
-    text-align: center;
-    margin: 0rem auto;
-    font-weight: 600;
-    color: rgb(6, 6, 41)
+  text-align: center;
+  margin: 0rem auto;
+  font-weight: 600;
+  color: rgb(6, 6, 41);
 }
 
 .table-header > div {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: var(--border-radius);
 
@@ -25,27 +24,26 @@ h4 {
 }
 
 button {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .button-add-row {
-    background: #445a85;
-    color: #ffffff;
-  }
-  
-  .button-remove-rows {
-    background: var(--color-link-default);
-    color: #ffffff;
-    margin-right: 5px;
-  }
-  
-  .button-remove {
-    color: var(--color-link-default);
-  }
+  background: #445a85;
+  color: #ffffff;
+}
 
+.button-remove-rows {
+  background: var(--color-link-default);
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.button-remove {
+  color: var(--color-link-default);
+}
 
 table {
-    width: 100%;
+  width: 100%;
 }
 
 .mat-header-row {
@@ -55,8 +53,8 @@ table {
 }
 
 .mat-header-row th {
-    color: inherit;
-    font-size: 1rem;
+  color: inherit;
+  font-size: 1rem;
 }
 
 .mat-row:nth-child(odd) {
@@ -68,26 +66,26 @@ table {
 }
 
 .mat-row td:nth-child(2) {
-  min-width: 50%;
+  width: 50%;
 }
 
 .mat-row td:nth-child(3) {
-  min-width: 20%;
+  width: 20%;
 }
 
 .mat-row td:nth-child(4) {
-  min-width: 1px;
+  width: 20%;
 }
 
 .mat-row td,
 .mat-header-cell {
-    border: none;
-    border-right: 1px solid white;
+  border: none;
+  border-right: 1px solid white;
 }
 
 .mat-cell,
 .mat-header-cell {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .mat-cell {
@@ -99,7 +97,33 @@ table {
 }
 
 .btn-edit {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@media (max-width: 800px) {
+
+  .service-section {
+    padding: 0.2rem 0 2rem 0;
+  }
+
+  :host >>> .mat-button-wrapper > span {
+    display: inline-block;
+    display: none;
+  }
+
+  .mat-cell,
+  .mat-header-cell,
+  button {
+    font-size: 0.8rem;
+  }
+
+
+  .mat-table {
+    max-width: 100%;
+  }
+  :host >>> .mat-form-field-infix {
+    max-width: 80px;
+  }
 }

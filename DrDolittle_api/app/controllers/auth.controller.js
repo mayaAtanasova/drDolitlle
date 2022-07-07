@@ -99,8 +99,6 @@ exports.login = (req, res) => {
             }
             const userRoles = user.roles.map(role => role.name);
             const isAdmin = userRoles.includes('admin');
-            console.log(userRoles)
-            console.log(isAdmin);
             const token = jwt.sign({ id: user._id, isAdmin: isAdmin }, config.secret, {
                 expiresIn: 86400 // 24 hours
             });

@@ -48,13 +48,11 @@ export class AdEditComponent implements OnInit {
   }
 
   onSubmit(formData:FormData): void {
-    console.log(formData.get('adImage'));
     
     this.adService.updateAd(this.currentAd._id, formData)
     .subscribe({
       next: (res) => {
         this.isSubmitted = true;
-        console.log(res);
         if(res.status === 400){
           this.isSuccessful = false;
           this.errorMessage = res.error.message;

@@ -76,3 +76,8 @@
   }
 }
 
+@media (max-width: 480px) {
+  .ad-card p {
+    font-size: 1.15rem;
+  } 
+}

@@ -18,7 +18,6 @@ export class AdItemComponent implements OnInit {
   }
 
   gotoDetails(id: string){
-    console.log(id);
     this.router.navigate([`/adlist/${this.ad._id}`])
   }
 

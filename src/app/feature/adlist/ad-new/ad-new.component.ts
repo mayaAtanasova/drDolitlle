@@ -60,7 +60,6 @@ export class AdNewComponent implements OnInit {
     .subscribe({
       next: (res) => {
         this.isSubmitted = true;
-        console.log(res);
         if(res.status === 400){
           this.isSuccessful = false;
           this.errorMessage = res.error.message;

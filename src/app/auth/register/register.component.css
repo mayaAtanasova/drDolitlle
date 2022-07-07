@@ -95,3 +95,19 @@ display: inline-block;
   padding: 2rem;
 }
 }
+
+@media (max-width: 480px) {
+  .registration-form-container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .registration-form {
+    box-shadow: unset;
+  }
+
+  .registration-form p {
+    font-size: 1.1rem;
+  }
+}

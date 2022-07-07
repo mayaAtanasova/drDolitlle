@@ -3,10 +3,12 @@
         <div>
             <h4>{{titles[category]}}</h4>
             <button *ngIf="isAdmin" class="button-remove-rows" mat-button (click)="onRemoveSelectedRows()">
-                Изтрий избраните редове
+                <span>Изтрий избраните редове </span> 
+                &#9866;
             </button>
             <button *ngIf="isAdmin" class="button-add-row" mat-button (click)="addRow($event)">
-                Добави ред
+                <span>Добави ред </span>
+                &#10010;
             </button>
         </div>
     </article>
@@ -23,10 +25,10 @@
                     </ng-container>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
                         <button *ngIf="isAdmin" mat-button (click)="element.isEdit = !element.isEdit">
-                            Промяна
+                            <span>Промяна</span> &#9874;
                         </button>
                         <button *ngIf="isAdmin" mat-button class="button-remove" (click)="onRemoveRow(element._id)">
-                            Изтриване
+                            <span>Изтриване</span> &#10006;
                         </button>
                     </div>
                     <span *ngSwitchCase="'date'">
@@ -40,7 +42,7 @@
                     <div *ngSwitchCase="'isSelected'"></div>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
                         <button *ngIf="isAdmin" mat-button (click)="onEditRow(element)" [disabled]="disableSubmit(element._id)">
-                            Готово
+                            <span>Готово</span> &#10004;
                         </button>
                     </div>
                     <mat-form-field class="form-input" *ngSwitchDefault>
