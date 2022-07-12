@@ -7,7 +7,7 @@ import { AdsService } from 'src/app/core/services/ads.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
-  selector: 'app-ad-edit',
+  selector: 'app-pad-edit',
   templateUrl: './ad-edit.component.html',
   styleUrls: ['./ad-edit.component.css']
 })

@@ -42,6 +42,8 @@ export class ServiceItemComponent implements OnInit {
     vaccine: 'Ваксинация',
     groom: 'Подстригване',
     administration: 'Администрация',
+    medicine: 'Медикаменти',
+    foods: 'Храни и аксесоари',
   };
 
   constructor(
@@ -62,6 +64,7 @@ export class ServiceItemComponent implements OnInit {
     if (!this.isAdmin) {
       this.displayedColumns = this.displayedColumns
       .filter(columnKey => columnKey != 'isEdit')
+      .filter(kolumnKey => kolumnKey != 'price');
     }
 
     if (changes.tableData) {

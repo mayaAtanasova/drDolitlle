@@ -55,6 +55,18 @@
             (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
         </app-service-item>
 
+    </section>
+
+    <section id="shop">
+        <h3>Зоомагазин</h3>
+
+        <app-service-item category="medicine" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+            (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+        </app-service-item>
+
+        <app-service-item category="foods" [tableData]="allTableData" (submitRowForEdit)="editRow($event)"
+        (submitRowForDeletion)="deleteRow($event)" (submitRowsForDeletion)="removeSelectedRows($event)">
+    </app-service-item>
 
     </section>
 

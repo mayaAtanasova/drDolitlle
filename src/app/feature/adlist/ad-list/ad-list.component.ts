@@ -9,7 +9,7 @@ import { IUser } from 'src/app/core/interfaces/user';
 
 
 @Component({
-  selector: 'app-ad-list',
+  selector: 'app-pad-list',
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.css'],
   animations: [

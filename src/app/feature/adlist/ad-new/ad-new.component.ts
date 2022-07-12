@@ -12,7 +12,7 @@ import { requiredFileType } from './required-file-type';
 
 
 @Component({
-  selector: 'app-ad-new',
+  selector: 'app-pad-new',
   templateUrl: './ad-new.component.html',
   styleUrls: ['./ad-new.component.css']
 })

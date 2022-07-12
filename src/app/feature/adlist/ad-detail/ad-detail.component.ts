@@ -7,7 +7,7 @@ import { AdsService } from 'src/app/core/services/ads.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
-  selector: 'app-ad-detail',
+  selector: 'app-pad-detail',
   templateUrl: './ad-detail.component.html',
   styleUrls: ['./ad-detail.component.css']
 })
