@@ -37,5 +37,12 @@ The 'new' and 'edit' pages for a lisitng make use of the same form, which is aut
 * Only the owner of the listing, the moderators and admin have access to the edit page, or can delete a listing
 * When a user tries to delete a listing a confirmation modal shows up, to prevent accidental deletion
 
+### Services functionality
+* The services page is available to all users
+* Normal users (whether authenticated or not) see the description of services by category
+* The admin has tools available to edit the services data: add rows to teh tables, edit the table contents, delete table rows - either by one or in selected batches
+
 ## Purpose
 Developed as a final project for the Soft Uni Angular course
+The ap is in production and can be seen at www.dr-dolittle.net.
+If you are in the area and need a vet service I can recommend it :)
